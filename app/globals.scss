@@ -1,0 +1,24 @@
+@use 'base';
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	scroll-padding-top: 10rem;
+	font-family: epilogue, sans-serif;
+	font-weight: 500;
+	color: base.$text;
+}
+
+h1 {
+	font-family: literata, serif;
+	font-weight: 600;
+}
