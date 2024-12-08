@@ -18,7 +18,55 @@ body {
 	color: base.$text;
 }
 
+%title {
+	margin: 0;
+	padding: 0;
+}
+
 h1 {
+	@extend %title;
 	font-family: literata, serif;
 	font-weight: 600;
+	font-size: 3rem;
+}
+
+h2 {
+	@extend %title;
+	font-family: literata, serif;
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+h3 {
+	@extend %title;
+	font-family: literata, serif;
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+h4 {
+	@extend %title;
+	font-family: epilogue, serif;
+	font-weight: 600;
+	font-size: 1.125rem;
+	color: base.$secondary;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1.25rem;
+	}
 }
