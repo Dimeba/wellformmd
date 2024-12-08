@@ -1,5 +1,4 @@
 // styles
-import { FC } from 'react'
 import styles from './Button.module.scss'
 
 // components
@@ -11,7 +10,7 @@ interface Props {
 	link: string
 }
 
-const Button: FC<Props> = ({ text, secondary, link }) => {
+const Button: React.FC<Props> = ({ text, secondary, link }) => {
 	return (
 		<Link
 			href={link}
