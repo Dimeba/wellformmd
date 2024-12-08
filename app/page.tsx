@@ -1,15 +1,21 @@
 // temps components
 import Button from '@/components/Button'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function Home() {
 	return (
 		<main>
-			<h1>H1 Title</h1>
-			<h2>H2 Title</h2>
-			<h3>H3 Title</h3>
-			<h4>H4 Title Title</h4>
-			<p>Welcome to the home page.</p>
-			<Button text='Learn More' link='#' />
+			<SectionTitle
+				subtitle='tone your body'
+				title='Weight Loss & Body Sculpting Treatments'
+			/>
+			<br />
+			<SectionTitle
+				subtitle='tone your body'
+				title='Weight Loss & Body Sculpting Treatments'
+				leftAlign
+				// white
+			/>
 		</main>
 	)
 }
