@@ -18,6 +18,11 @@ body {
 	color: base.$text;
 }
 
+.container {
+	width: min(1440px, 90%);
+	margin: 0 auto;
+}
+
 %title {
 	margin: 0;
 	padding: 0;
