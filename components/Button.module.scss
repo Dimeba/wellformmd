@@ -1,0 +1,30 @@
+@use '@/app/base';
+
+%button {
+	padding: 1rem 2rem;
+	width: fit-content;
+	border-radius: 50px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-weight: 600;
+}
+
+.primary {
+	@extend %button;
+	background-color: base.$primary;
+	color: white;
+}
+
+.primary:hover {
+	background-color: base.$secondary;
+}
+
+.secondary {
+	@extend %button;
+	background-color: base.$secondary;
+	color: white;
+}
+
+.secondary:hover {
+	background-color: base.$primary;
+}
