@@ -3,20 +3,59 @@
 // styles
 import styles from './Cards.module.scss'
 
+// hooks
+import { useState, useEffect } from 'react'
+
 interface Props {
 	slider?: true
 	columns: 3 | 4
 }
 
 const Cards: React.FC<Props> = ({ slider, columns }) => {
-	const scroll = (position: number): void => {
+	const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
+	const [columnWidth, setColumnWidth] = useState<number>(0)
+
+	// Calculate window width on window resize
+	useEffect(() => {
+		const handleResize = () => {
+			setWindowWidth(window.innerWidth)
+		}
+
+		window.addEventListener('resize', handleResize)
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [])
+
+	// Scroll function
+	const scroll = (forward: boolean): void => {
 		const container = document.querySelector(`.${styles.slider}`)
 		if (container) {
-			container.scrollBy({ left: position, behavior: 'smooth' })
+			const containerWidth = container.clientWidth
+
+			// Calculate gap between columns based on rem
+			const gap =
+				parseFloat(getComputedStyle(document.documentElement).fontSize) * 2
+
+			// Calculate column width based on window width
+			let newColumnWidth: number
+			switch (true) {
+				case windowWidth < 768:
+					newColumnWidth = containerWidth
+					break
+				case windowWidth < 1024:
+					newColumnWidth = (containerWidth - gap) / 2
+					break
+				default:
+					newColumnWidth = (containerWidth - gap * (columns - 1)) / columns
+			}
+
+			container.scrollBy({
+				left: forward ? newColumnWidth : -newColumnWidth,
+				behavior: 'smooth'
+			})
 		}
 	}
-
-	const scrollPosition: number = 200
 
 	const defaultStyles = {
 		gridTemplateColumns: `repeat(${columns}, 1fr)`
@@ -28,8 +67,8 @@ const Cards: React.FC<Props> = ({ slider, columns }) => {
 
 	return (
 		<div className={styles.cardsContainer}>
-			{slider && <button onClick={() => scroll(-scrollPosition)}>Left</button>}
-			{slider && <button onClick={() => scroll(scrollPosition)}>Right</button>}
+			{slider && <button onClick={() => scroll(false)}>Left</button>}
+			{slider && <button onClick={() => scroll(true)}>Right</button>}
 			<div
 				className={`${slider ? styles.slider : styles.default}`}
 				style={slider ? sliderStyles : defaultStyles}
