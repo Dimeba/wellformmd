@@ -13,7 +13,6 @@ interface Props {
 
 const Cards: React.FC<Props> = ({ slider, columns }) => {
 	const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
-	const [columnWidth, setColumnWidth] = useState<number>(0)
 
 	// Calculate window width on window resize
 	useEffect(() => {
