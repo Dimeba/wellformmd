@@ -11,13 +11,13 @@ export default async function Home() {
 	const client = getGraphQLClient()
 
 	const query = gql`
-		query GetPosts {
-			posts {
-				edges {
-					node {
-						id
-						title
-					}
+		query GetHomepage {
+			page(id: "/", idType: URI) {
+				title
+				homepageFields {
+					heroTitle
+					heroSubtitle
+					heroText
 				}
 			}
 		}
@@ -25,11 +25,18 @@ export default async function Home() {
 
 	// Execute the GraphQL query
 	const data = await client.request<{
-		posts: { edges: { node: { id: string; title: string } }[] }
+		page: {
+			title: string
+			homepageFields: {
+				heroTitle: string
+				heroSubtitle: string
+				heroText: string
+			}
+		}
 	}>(query)
-	const { posts } = data
+	const { page } = data
 
-	console.log(posts)
+	console.log(page.homepageFields.heroTitle)
 
 	return (
 		<main>
