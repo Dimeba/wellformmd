@@ -4,9 +4,8 @@ import Button from '@/components/Button'
 import SectionTitle from '@/components/SectionTitle'
 import Cards from '@/components/Cards'
 
-// temp data
-/* import { getGraphQLClient } from '@/lib/graphql-client'
- */ import { gql } from 'graphql-request'
+// queries
+import { getPageById, getSectionById } from '@/graphql/queries'
 
 export const metadata = {
 	title: 'Weight Loss and Wellness',
@@ -16,48 +15,41 @@ export const metadata = {
 	},
 	keywords: ['health', 'wellness', 'Iowa', 'nutrition', 'coaching']
 }
+
 export default async function Home() {
-	/* 	const client = getGraphQLClient()
+	// Getting the page
+	const page = await getPageById('/')
+	const sections = []
 
-	const query = gql`
-		query GetHomepage {
-			page(id: "/", idType: URI) {
-				title
-				homepageFields {
-					heroTitle
-					heroSubtitle
-					heroText
-				}
-			}
+	// Getting the sections
+	if (page.pageFields.sections && page.pageFields.sections.edges) {
+		for (const edge of page.pageFields.sections.edges) {
+			const section = await getSectionById(edge.node.id)
+			sections.push(section)
 		}
-	`
+	}
 
-	// Execute the GraphQL query
-	const data = await client.request<{
-		page: {
-			title: string
-			homepageFields: {
-				heroTitle: string
-				heroSubtitle: string
-				heroText: string
-			}
-		}
-	}>(query)
-	const { page } = data
-
-	console.log(page.homepageFields.heroTitle) */
+	// Sections
+	const heroSection = sections[0].sectionFields
+	const treatmentsSection = sections[1].sectionFields
 
 	return (
 		<main>
-			<Hero />
+			<Hero title={heroSection.title} />
 
-			<div className='container'>
-				<Cards columns={4} />
-			</div>
+			<section>
+				<div className='container'>
+					<SectionTitle
+						title={treatmentsSection.title}
+						subtitle={treatmentsSection.subtitle}
+					/>
+					<Cards columns={4} />
+				</div>
+			</section>
 
-			<div className='container'>
+			{/* <div className='container'>
 				<Cards columns={3} slider />
-			</div>
+			</div> */}
 		</main>
 	)
 }
