@@ -1,4 +1,4 @@
-import { GraphQLClient } from 'graphql-request'
+/* import { GraphQLClient } from 'graphql-request'
 
 export function getGraphQLClient(): GraphQLClient {
 	const endpoint = process.env.wordpress
@@ -9,3 +9,4 @@ export function getGraphQLClient(): GraphQLClient {
 
 	return new GraphQLClient(endpoint)
 }
+ */
