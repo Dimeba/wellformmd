@@ -46,7 +46,6 @@ export async function getSectionById(id: string) {
 		query GetSection($id: ID!) {
 			section(id: $id) {
 				sectionFields {
-					addButtons
 					addPosts
 					image {
 						node {
@@ -55,13 +54,9 @@ export async function getSectionById(id: string) {
 					}
 					subtitle
 					text
+					smallText
 					title
 					posts {
-						nodes {
-							id
-						}
-					}
-					buttons {
 						nodes {
 							id
 						}
@@ -74,7 +69,6 @@ export async function getSectionById(id: string) {
 	const data = await client.request<{
 		section: {
 			sectionFields: {
-				addButtons: boolean
 				addPosts: boolean
 				image: {
 					node: {
@@ -83,13 +77,9 @@ export async function getSectionById(id: string) {
 				}
 				subtitle: string
 				text: string
+				smallText: string
 				title: string
 				posts: {
-					nodes: {
-						id: string
-					}[]
-				}
-				buttons: {
 					nodes: {
 						id: string
 					}[]
@@ -99,4 +89,49 @@ export async function getSectionById(id: string) {
 	}>(query, { id })
 
 	return data.section
+}
+
+// treatements
+export async function getTreatments() {
+	const query = gql`
+		query GetTreatments {
+			treatments {
+				edges {
+					node {
+						id
+						title
+						treatmentFields {
+							subtitle
+							image {
+								node {
+									link
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<{
+		treatments: {
+			edges: {
+				node: {
+					id: string
+					title: string
+					treatmentFields: {
+						subtitle: string
+						image: {
+							node: {
+								link: string
+							}
+						}
+					}
+				}
+			}[]
+		}
+	}>(query)
+
+	return data.treatments.edges
 }

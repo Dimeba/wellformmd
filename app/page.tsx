@@ -5,11 +5,11 @@ import SectionTitle from '@/components/SectionTitle'
 import Cards from '@/components/Cards'
 
 // queries
-import { getPageById, getSectionById } from '@/graphql/queries'
+import { getPageById, getSectionById, getTreatments } from '@/graphql/queries'
 
 export const metadata = {
-	title: 'Weight Loss and Wellness',
-	description: 'Health and Wellness',
+	title: 'Wellform MD - Weight Loss & Wellness',
+	description: 'Weight Loss & Wellness',
 	icons: {
 		icon: '/favicon.svg'
 	},
@@ -33,6 +33,9 @@ export default async function Home() {
 	const heroSection = sections[0].sectionFields
 	const treatmentsSection = sections[1].sectionFields
 
+	// Treatments
+	const treatments = await getTreatments()
+
 	return (
 		<main>
 			<Hero title={heroSection.title} />
@@ -43,7 +46,16 @@ export default async function Home() {
 						title={treatmentsSection.title}
 						subtitle={treatmentsSection.subtitle}
 					/>
-					<Cards columns={4} />
+					<p
+						style={{
+							textAlign: 'center',
+							textWrap: 'balance',
+							marginBottom: '4rem'
+						}}
+					>
+						{treatmentsSection.text}
+					</p>
+					<Cards columns={4} content={treatments} />
 				</div>
 			</section>
 
