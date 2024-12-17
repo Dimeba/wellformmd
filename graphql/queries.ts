@@ -1,6 +1,9 @@
 import { getGraphQLClient } from '@/lib/graphql-client'
 import { gql } from 'graphql-request'
 
+// types
+import { Treatments, Section, Page } from '@/types/contentTypes'
+
 const client = getGraphQLClient()
 
 // pages
@@ -22,20 +25,7 @@ export async function getPageById(id: string) {
 		}
 	`
 
-	const data = await client.request<{
-		page: {
-			title: string
-			pageFields: {
-				sections: {
-					edges: {
-						node: {
-							id: string
-						}
-					}[]
-				}
-			}
-		}
-	}>(query, { id })
+	const data = await client.request<Page>(query, { id })
 
 	return data.page
 }
@@ -66,27 +56,7 @@ export async function getSectionById(id: string) {
 		}
 	`
 
-	const data = await client.request<{
-		section: {
-			sectionFields: {
-				addPosts: boolean
-				image: {
-					node: {
-						link: string
-					}
-				}
-				subtitle: string
-				text: string
-				smallText: string
-				title: string
-				posts: {
-					nodes: {
-						id: string
-					}[]
-				}
-			}
-		}
-	}>(query, { id })
+	const data = await client.request<Section>(query, { id })
 
 	return data.section
 }
@@ -114,24 +84,7 @@ export async function getTreatments() {
 		}
 	`
 
-	const data = await client.request<{
-		treatments: {
-			edges: {
-				node: {
-					id: string
-					title: string
-					treatmentFields: {
-						subtitle: string
-						image: {
-							node: {
-								link: string
-							}
-						}
-					}
-				}
-			}[]
-		}
-	}>(query)
+	const data = await client.request<Treatments>(query)
 
 	return data.treatments.edges
 }

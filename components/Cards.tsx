@@ -8,17 +8,17 @@ import { useState, useEffect } from 'react'
 
 // types
 import {
-	Treatments,
-	Benefits,
-	Testimonials,
-	Articles,
-	Team
+	Treatment,
+	Benefit,
+	Testimonial,
+	Article,
+	TeamMember
 } from '@/types/contentTypes'
 
 interface Props {
 	slider?: true
 	columns: 3 | 4
-	content: Treatments[] | Benefits[] | Testimonials[] | Articles[] | Team[]
+	content: Treatment[] | Benefit[] | Testimonial[] | Article[] | TeamMember[]
 }
 
 const Cards: React.FC<Props> = ({ slider, columns, content }) => {

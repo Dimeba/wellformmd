@@ -1,4 +1,50 @@
+// Pages
+export type Page = {
+	page: {
+		title: string
+		pageFields: {
+			sections: {
+				edges: {
+					node: {
+						id: string
+					}
+				}[]
+			}
+		}
+	}
+}
+
+// Sections
+export type Section = {
+	section: {
+		sectionFields: {
+			addPosts: boolean
+			image: {
+				node: {
+					link: string
+				}
+			}
+			subtitle: string
+			text: string
+			smallText: string
+			title: string
+			posts: {
+				nodes: {
+					id: string
+				}[]
+			}
+		}
+	}
+}
+
+// Treatements
 export type Treatments = {
+	treatments: {
+		edges: Treatment[]
+	}
+}
+
+export type Treatment = {
 	node: {
 		id: string
 		title: string
@@ -13,28 +59,32 @@ export type Treatments = {
 	}
 }
 
-export type Benefits = {
+// Benefits
+export type Benefit = {
 	node: {
 		id: string
 		title: string
 	}
 }
 
-export type Testimonials = {
+// Testimonials
+export type Testimonial = {
 	node: {
 		id: string
 		title: string
 	}
 }
 
-export type Articles = {
+// Articles
+export type Article = {
 	node: {
 		id: string
 		title: string
 	}
 }
 
-export type Team = {
+// Team
+export type TeamMember = {
 	node: {
 		id: string
 		title: string
