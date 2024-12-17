@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 //icons, images, link
 import Link from "next/link";
 import Image from "next/image";
+import { FaChevronDown } from "react-icons/fa"; // Import Chevron Down from react-icons
 
 //components
 import Button from "./Button";
@@ -104,7 +105,20 @@ const Header: React.FC = () => {
                       : setActiveSubmenu(false)
                   }
                 >
-                  {item.title}
+                  <div
+                    style={{
+                      display: "flex",
+                    }}
+                  >
+                    {item.title}
+                    {item.title === "Treatments" && (
+                      <FaChevronDown
+                        style={{
+                          marginLeft: "0.2rem",
+                        }}
+                      />
+                    )}
+                  </div>
                 </Link>
                 {item.submenu && (
                   <div
@@ -112,30 +126,32 @@ const Header: React.FC = () => {
                       activeSubmenu == index ? styles.open : ""
                     }`}
                   >
-                    {item.submenuTitle && (
-                      <div className={styles.submenuTitle}>
-                        <h3>{item.submenuTitle}</h3>
-                        <div className={styles.dropdownContent}>
-                          {item.submenu.map((subItem, subIndex) => (
-                            <Link
-                              key={subIndex}
-                              href={subItem.href}
-                              className={styles.dropdownLink}
-                              onClick={() => setActiveSubmenu(false)}
-                            >
-                              {subItem.title}
-                            </Link>
-                          ))}
+                    <div className={`container ${styles.dropdownContainer}`}>
+                      {item.submenuTitle && (
+                        <div className={styles.submenuTitle}>
+                          <h3>{item.submenuTitle}</h3>
+                          <div className={styles.dropdownContent}>
+                            {item.submenu.map((subItem, subIndex) => (
+                              <Link
+                                key={subIndex}
+                                href={subItem.href}
+                                className={styles.dropdownLink}
+                                onClick={() => setActiveSubmenu(false)}
+                              >
+                                {subItem.title}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
+                      )}
+                      <div className={styles.dropdownImageWrapper}>
+                        <Image
+                          src="/dropdown.jpg"
+                          alt="submenu example img"
+                          width={600}
+                          height={400}
+                        />
                       </div>
-                    )}
-                    <div className={styles.dropdownImageWrapper}>
-                      <Image
-                        src="/dropdown.jpg"
-                        alt="submenu example img"
-                        width={400}
-                        height={300}
-                      />
                     </div>
                   </div>
                 )}
