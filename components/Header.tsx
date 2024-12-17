@@ -33,10 +33,10 @@ const menuItems: MenuItem[] = [
       { title: "Waist Buster", href: "/waist-buster" },
       { title: "Mommy Makeover", href: "/mommy-makeover" },
       {
-        title: "Ultraslim Fat and Weight Loss",
+        title: "UltraSlim® Fat & Weight Loss",
         href: "/ultraslim-weight-loss",
       },
-      { title: "Ultrasmooth Cellulite", href: "/ultrasmooth-cellulite" },
+      { title: "UltraSmooth® Cellulite", href: "/ultrasmooth-cellulite" },
     ],
   },
   { title: "Specials", href: "#specials" },
@@ -77,7 +77,10 @@ const Header: React.FC = () => {
         isScrolled || !isHomepage ? styles.scrolled : ""
       }`}
     >
-      <p className={styles.welcomeMessage}>(515)446-8304</p>
+      <p className={styles.welcomeMessage}>
+        <i className="fa-solid fa-phone-volume" />
+        (515) 446-8304
+      </p>
       <div className={`container ${styles.headerContainer}`}>
         <a href="/" className={styles.logoWrapper}>
           <img

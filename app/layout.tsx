@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.scss";
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Wellform MD",
@@ -32,7 +33,7 @@ export default function RootLayout({
         <body>
           <Header />
           {children}
-          {/*   <Footer /> */}
+          <Footer />
         </body>
       </html>
     </>
