@@ -43,6 +43,8 @@ export default async function Home() {
         title={heroSection.title}
         subtitle={heroSection.subtitle}
         heroLayout={heroLayout}
+        text={heroSection.text}
+        image={heroSection.image.node.link}
       />
 
       <section>

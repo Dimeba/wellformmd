@@ -24,6 +24,8 @@ const Hero: React.FC<Props> = ({
       className={styles.hero}
       style={{
         backgroundImage: image ? `url(${image})` : "none",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         backgroundColor: !image ? "#EFF9FA" : "",
       }}
     >
@@ -45,11 +47,11 @@ const Hero: React.FC<Props> = ({
           </>
         )}
       </div>
-      {image && (
+      {/*   {image && (
         <div className={styles.imageContainer}>
           <img src={image} alt="Hero Image" className={styles.image} />
         </div>
-      )}
+      )} */}
     </section>
   );
 };
