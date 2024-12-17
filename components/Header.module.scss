@@ -64,8 +64,11 @@
   text-align: center;
   justify-content: center;
   margin: 0 auto;
+  padding: 0;
 }
-
+.menuItemContainer {
+  display: flex;
+}
 .menuItem {
   text-decoration: none;
   line-height: 1.2;
@@ -115,7 +118,7 @@
   margin-top: 2rem;
   a {
     display: block;
-    padding: 0.5rem 0;
+    padding: 0.5rem;
     background-color: white;
     text-align: left;
     text-decoration: none;

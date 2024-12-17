@@ -40,10 +40,10 @@ const menuItems: MenuItem[] = [
       { title: "UltraSmooth® Cellulite", href: "/ultrasmooth-cellulite" },
     ],
   },
-  { title: "Specials", href: "#specials" },
-  { title: "Gallery", href: "#gallery" },
-  { title: "About Us", href: "#aboutUs" },
-  { title: "Blog", href: "#blog" },
+  { title: "Specials", href: "/specials" },
+  { title: "Gallery", href: "/gallery" },
+  { title: "About Us", href: "/about" },
+  { title: "Blog", href: "/blog" },
 ];
 
 const Header: React.FC = () => {
@@ -86,8 +86,8 @@ const Header: React.FC = () => {
         <a href="/" className={styles.logoWrapper}>
           <img
             src="/logo.svg"
-            width={200}
-            height={60}
+            width={280}
+            height={70}
             alt="Weight loss and wellness"
             className={styles.logo}
           />
@@ -111,7 +111,7 @@ const Header: React.FC = () => {
                     }}
                   >
                     {item.title}
-                    {item.title === "Treatments" && (
+                    {item.title == "Treatments" && (
                       <FaChevronDown
                         style={{
                           marginLeft: "0.2rem",
