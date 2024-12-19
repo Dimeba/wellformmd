@@ -1,83 +1,111 @@
-@use '@/app/base';
+@use "@/app/base";
 
 .cardsContainer {
-	position: relative;
+  position: relative;
+  /*   overflow: hidden; */
 
-	button {
-		position: absolute;
-		z-index: 1;
-		top: 50%;
-		cursor: pointer;
-		opacity: 0.5;
-		width: 3rem;
-		aspect-ratio: 1 / 1;
-		border-radius: 50px;
-		border: none;
-	}
+  button {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    cursor: pointer;
+    opacity: 0.5;
+    width: 3rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50px;
+    border: none;
+  }
 
-	button:hover {
-		opacity: 1;
-	}
+  button:hover {
+    opacity: 1;
+  }
 
-	button:first-of-type {
-		left: 0;
-		transform: translateX(-50%) translateY(-50%);
-	}
+  button:first-of-type {
+    left: 0;
+    transform: translateX(-50%) translateY(-50%);
+  }
 
-	button:last-of-type {
-		right: 0;
-		transform: translateX(50%) translateY(-50%);
-	}
+  button:last-of-type {
+    right: 0;
+    transform: translateX(50%) translateY(-50%);
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30%;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .cardTitle {
+      &:hover {
+        color: base.$primary;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
+.cardImage {
+  padding-top: 2rem;
+  box-shadow: 0 20px 0px -10px base.$primary;
+}
 %columns {
-	display: grid;
-	grid-gap: 2rem;
+  display: grid;
+  grid-gap: 2rem;
+  margin-top: 4rem;
+  height: 100% !important;
 }
 
 .default {
-	@extend %columns;
+  @extend %columns;
 }
 
 .slider {
-	@extend %columns;
-	position: relative;
-	grid-auto-flow: column;
-	overflow-x: auto;
-	overscroll-behavior-inline: contain;
-	scroll-snap-type: inline mandatory;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+  @extend %columns;
+  position: relative;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
-	> * {
-		scroll-snap-align: start;
-	}
+  > * {
+    scroll-snap-align: start;
+  }
 
-	div {
-		background-color: red;
-	}
+  div {
+    background-color: red;
+  }
 }
 
 .slider::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {
-	.default {
-		grid-template-columns: repeat(2, 1fr) !important;
-	}
+  .default {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 
-	.slider {
-		grid-auto-columns: calc((100% - 2rem) / 2) !important;
-	}
+  .slider {
+    grid-auto-columns: calc((100% - 2rem) / 2) !important;
+  }
+  .cardImage {
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
-	.default {
-		grid-template-columns: 1fr !important;
-	}
+  .default {
+    grid-template-columns: 1fr !important;
+  }
 
-	.slider {
-		grid-auto-columns: 100% !important;
-	}
+  .slider {
+    grid-auto-columns: 100% !important;
+  }
 }

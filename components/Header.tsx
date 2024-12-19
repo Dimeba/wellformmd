@@ -12,7 +12,8 @@ import { usePathname } from "next/navigation";
 //icons, images, link
 import Link from "next/link";
 import Image from "next/image";
-import { FaChevronDown } from "react-icons/fa"; // Import Chevron Down from react-icons
+import { FaChevronDown } from "react-icons/fa";
+import "font-awesome/css/font-awesome.min.css";
 
 //components
 import Button from "./Button";
@@ -28,7 +29,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     title: "Treatments",
-    href: "#treatments",
+    href: "/treatments",
     submenuTitle: "Treatments",
     submenu: [
       { title: "Waist Buster", href: "/waist-buster" },

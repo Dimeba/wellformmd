@@ -1,0 +1,42 @@
+@use "@/app/base";
+
+.reviewContainer {
+  width: 100%;
+  background-color: base.$primary;
+  margin: 0 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  height: 160px;
+}
+
+.imageGrid {
+  justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+.imagePlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover contain;
+  }
+}
+
+@media (max-width: 1024px) {
+  .imageGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

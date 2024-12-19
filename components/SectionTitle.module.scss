@@ -1,36 +1,36 @@
-@use '@/app/base';
+@use "@/app/base";
 
 .sectionTitle {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	h4 {
-		margin-bottom: 0.75rem;
-	}
+  h4 {
+    margin-bottom: 0.75rem;
+  }
 
-	hr {
-		width: 136px;
-		margin: 1.5rem 0;
-		height: 1px;
-		border: none;
-		background-color: base.$primary;
-	}
+  hr {
+    width: 136px;
+    margin: 1.5rem 0;
+    height: 1px;
+    border: none;
+    background-color: base.$primary;
+  }
 }
 
 .center {
-	align-items: center;
+  align-items: center;
 }
 
 .left {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
 .white {
-	* {
-		color: white !important;
-	}
+  * {
+    color: white !important;
+  }
 
-	hr {
-		background-color: white !important;
-	}
+  hr {
+    background-color: white !important;
+  }
 }

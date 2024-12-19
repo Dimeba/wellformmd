@@ -10,6 +10,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+
     .footerColumns:nth-child(2),
     .footerColumns:nth-child(3),
     .footerColumns:nth-child(4) {

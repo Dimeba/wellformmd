@@ -1,21 +1,29 @@
-"use client";
-
-// app/about/[slug]/page.tsx
-import { useParams } from "next/navigation";
-
+import { getPageById, getSectionById } from "@/graphql/queries";
 import Hero from "../../components/Hero";
 
-export default function AboutSlugPage() {
-  const params = useParams();
-  const { slug } = params;
+export default async function BlogSlugPage() {
+  const page = await getPageById("cG9zdDoxNTIz");
+  const sections = [];
 
-  const subtitle = "Ovo je podnaslov ";
-  const title = "Testno";
+  // Getting the sections
+  if (page.pageFields.sections && page.pageFields.sections.edges) {
+    for (const edge of page.pageFields.sections.edges) {
+      const section = await getSectionById(edge.node.id);
+      sections.push(section);
+    }
+  }
+
+  const heroSection = sections[0]?.sectionFields;
   const heroLayout = "layout3";
 
   return (
     <div>
-      <Hero subtitle={subtitle} title={title} heroLayout={heroLayout} />
+      <Hero
+        subtitle={heroSection?.subtitle || ""}
+        title={heroSection?.title || ""}
+        heroLayout={heroLayout}
+        image={heroSection?.image?.node?.link || ""}
+      />
     </div>
   );
 }
