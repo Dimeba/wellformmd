@@ -4,7 +4,8 @@ import Button from "@/components/Button";
 import SectionTitle from "@/components/SectionTitle";
 import Cards from "@/components/Cards";
 import Review from "@/components/Review";
-
+import ContactSection from "@/components/Contact";
+import LocationSection from "@/components/Location";
 // queries
 import {
   getPageById,
@@ -109,7 +110,15 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* reviews */}
       <Review />
+
+      {/* contact section */}
+      <ContactSection />
+
+      {/* location section */}
+      <LocationSection />
     </main>
   );
 }
