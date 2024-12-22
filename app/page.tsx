@@ -2,6 +2,7 @@
 import Hero from '@/components/Hero'
 import Reviews from '@/components/Reviews'
 import Section from '@/components/Section'
+import DoubleSection from '@/components/DoubleSection'
 
 // queries
 import {
@@ -38,6 +39,8 @@ export default async function Home() {
 	const heroSection = sections[0].sectionFields
 	const treatmentsSection = sections[1].sectionFields
 	const benefitsSection = sections[2].sectionFields
+	const doubleSection1 = sections[3].sectionFields
+	const doubleSection2 = sections[4].sectionFields
 
 	// Treatments
 	const treatments = await getTreatments()
@@ -80,6 +83,25 @@ export default async function Home() {
 
 			{/* reviews */}
 			<Reviews content={reviews} />
+
+			<DoubleSection
+				title={doubleSection1.title}
+				subtitle={doubleSection1.subtitle}
+				text={doubleSection1.text}
+				smallText={doubleSection1.smallText}
+				image={doubleSection1.image.node.link}
+				image2={doubleSection1.image2.node.link}
+			/>
+
+			<DoubleSection
+				title={doubleSection2.title}
+				subtitle={doubleSection2.subtitle}
+				text={doubleSection2.text}
+				smallText={doubleSection2.smallText}
+				image={doubleSection2.image.node.link}
+				image2={doubleSection2.image2.node.link}
+				reverse
+			/>
 		</main>
 	)
 }

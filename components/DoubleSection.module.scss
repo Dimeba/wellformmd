@@ -1,0 +1,68 @@
+@use '@/app/base';
+
+.doubleSection {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2rem;
+}
+
+.column {
+	width: calc((100% - 2rem) / 2);
+	display: flex;
+}
+
+.columnContent {
+	width: min(calc(base.$maxWidth / 2), 45vw);
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	overflow: hidden;
+}
+
+.buttons {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.smallText {
+	font-size: 0.825rem;
+	font-style: italic;
+}
+
+.images {
+	position: relative;
+	aspect-ratio: 1 /1;
+}
+
+.image2 {
+	position: absolute;
+	background-color: red;
+	width: 33%;
+	aspect-ratio: 1 /1;
+	bottom: 0;
+	border-top: 1rem solid white;
+}
+
+@media screen and (max-width: 1024px) {
+	.doubleSection {
+		flex-direction: column-reverse !important;
+	}
+
+	.column {
+		width: 100%;
+	}
+
+	.columnContent {
+		width: 90vw;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.images {
+		border-top-left-radius: 0 !important;
+		border-top-right-radius: 0 !important;
+	}
+}

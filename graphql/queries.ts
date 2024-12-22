@@ -48,6 +48,11 @@ export async function getSectionById(id: string) {
 							link
 						}
 					}
+					image2 {
+						node {
+							link
+						}
+					}
 					subtitle
 					text
 					smallText

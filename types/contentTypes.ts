@@ -24,6 +24,11 @@ export type Section = {
 					link: string
 				}
 			}
+			image2: {
+				node: {
+					link: string
+				}
+			}
 			subtitle: string
 			text: string
 			smallText: string

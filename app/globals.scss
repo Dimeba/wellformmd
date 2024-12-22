@@ -31,7 +31,7 @@ section {
 }
 
 .container {
-	width: min(1440px, 90%);
+	width: min(base.$maxWidth, 90%);
 	margin: 0 auto;
 }
 
@@ -52,6 +52,7 @@ h2 {
 	font-family: literata, serif;
 	font-weight: 600;
 	font-size: 2rem;
+	text-wrap: balance;
 }
 
 h3 {
