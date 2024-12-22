@@ -91,6 +91,8 @@ export default async function Home() {
 				smallText={doubleSection1.smallText}
 				image={doubleSection1.image.node.link}
 				image2={doubleSection1.image2.node.link}
+				button1={{ text: 'Learn More', link: '/treatments' }}
+				button2={{ text: 'Before & After Photos', link: '/gallery' }}
 			/>
 
 			<DoubleSection
@@ -101,6 +103,8 @@ export default async function Home() {
 				image={doubleSection2.image.node.link}
 				image2={doubleSection2.image2.node.link}
 				reverse
+				button1={{ text: 'Book Consultation', link: '/' }}
+				button2={{ text: 'Our Treatments', link: '/treatments' }}
 			/>
 		</main>
 	)

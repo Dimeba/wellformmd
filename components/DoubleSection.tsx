@@ -14,6 +14,14 @@ interface Props {
 	image?: string
 	image2?: string
 	reverse?: boolean
+	button1?: {
+		text: string
+		link: string
+	}
+	button2?: {
+		text: string
+		link: string
+	}
 }
 
 const DoubleSection: React.FC<Props> = ({
@@ -23,7 +31,9 @@ const DoubleSection: React.FC<Props> = ({
 	smallText,
 	image,
 	image2,
-	reverse
+	reverse,
+	button1,
+	button2
 }) => {
 	return (
 		<section
@@ -43,10 +53,14 @@ const DoubleSection: React.FC<Props> = ({
 						leftAlign
 					/>
 
-					<div className={styles.buttons}>
-						<Button text='Book now' link='/' />
-						<Button text='Book now' link='/' secondary />
-					</div>
+					{button1 && (
+						<div className={styles.buttons}>
+							<Button text={button1.text} link={button1.link} />
+							{button2 && (
+								<Button text={button2.text} link={button2.link} secondary />
+							)}
+						</div>
+					)}
 
 					<p className={styles.smallText}>{smallText}</p>
 				</div>
