@@ -8,7 +8,7 @@ interface Props {
 	title: string
 	subtitle?: string
 	text?: string
-	hideDivider?: true | undefined
+	hideDivider?: boolean | undefined
 	leftAlign?: true | undefined
 	white?: true | undefined
 }

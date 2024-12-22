@@ -74,6 +74,7 @@ export default async function Home() {
 				subtitle={benefitsSection.subtitle}
 				cardsContent={benefits}
 				cardsColumns={4}
+				cardsFlex
 				bottomButtons
 			/>
 

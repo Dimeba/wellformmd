@@ -23,9 +23,10 @@ interface Props {
 	slider?: true
 	columns: 3 | 4
 	content: Treatment[] | Benefit[] | Testimonial[] | Article[] | TeamMember[]
+	cardsFlex?: true
 }
 
-const Cards: React.FC<Props> = ({ slider, columns, content }) => {
+const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 	const [windowWidth, setWindowWidth] = useState<number>(0)
 
 	// Calculate window width on window resize
@@ -83,7 +84,13 @@ const Cards: React.FC<Props> = ({ slider, columns, content }) => {
 			{slider && <button onClick={() => scroll(false)}>Left</button>}
 			{slider && <button onClick={() => scroll(true)}>Right</button>}
 			<div
-				className={`${slider ? styles.slider : styles.default}`}
+				className={`${
+					cardsFlex && !slider
+						? styles.flex
+						: slider
+						? styles.slider
+						: styles.default
+				}`}
 				style={slider ? sliderStyles : defaultStyles}
 			>
 				{content.map(item => {

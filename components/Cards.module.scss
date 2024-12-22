@@ -67,6 +67,19 @@
 	display: none;
 }
 
+.flex {
+	margin-top: 4rem;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	row-gap: 3rem;
+	column-gap: 2rem;
+
+	> div {
+		width: calc((100% - 6rem) / 4);
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	.default {
 		grid-template-columns: repeat(2, 1fr) !important;
@@ -84,5 +97,15 @@
 
 	.slider {
 		grid-auto-columns: 100% !important;
+	}
+
+	.flex {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		> div {
+			width: 100%;
+		}
 	}
 }
