@@ -25,7 +25,7 @@ const Hero: React.FC<Props> = ({
 }) => {
 	return (
 		<section
-			className={styles.hero}
+			className={`${styles.hero} ${isHomepage ? styles.heroBackground : ''}`}
 			style={{
 				backgroundImage: image ? `url(${image})` : 'none',
 				height: fullHeight ? '100vh' : 'auto',

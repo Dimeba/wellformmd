@@ -34,8 +34,12 @@
 }
 
 @media screen and (max-width: 1024px) {
+	.heroBackground {
+		background-position: -850px;
+	}
+
 	.heroHomepage {
-		width: 100%;
+		width: 75%;
 	}
 }
 
