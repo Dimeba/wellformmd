@@ -1,39 +1,30 @@
-@use "@/app/base";
+@use '@/app/base';
 
 %button {
-  padding: 1.3rem 2rem;
-  width: fit-content;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: 0.3s;
-  font-weight: 600;
+	padding: 1.3rem 2rem;
+	width: fit-content;
+	border-radius: 50px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-weight: 600;
 }
 
 .primary {
-  @extend %button;
-  background-color: base.$primary;
-  color: white;
+	@extend %button;
+	background-color: base.$primary;
+	color: white;
 }
 
 .primary:hover {
-  background-color: base.$secondary;
+	background-color: base.$secondary;
 }
 
 .secondary {
-  @extend %button;
-  background-color: base.$secondary;
-  color: white;
+	@extend %button;
+	background-color: base.$secondary;
+	color: white;
 }
 
 .secondary:hover {
-  background-color: base.$primary;
-}
-@media screen and (max-width: 1024px) {
-  .primary,
-  .secondary {
-    margin: 1rem auto;
-    display: block;
-    font-size: 12px;
-    padding: 0.8rem 0.8rem;
-  }
+	background-color: base.$primary;
 }

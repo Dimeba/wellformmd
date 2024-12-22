@@ -89,61 +89,28 @@ const Cards: React.FC<Props> = ({ slider, columns, content }) => {
 				{content.map(item => {
 					//treatment fields
 					if ('treatmentFields' in item.node) {
-						const treatmentImage = item.node.treatmentFields?.image?.node?.link
-						const treatmentTitle = item.node.title
-						const treatmentSubtitle = item.node.treatmentFields?.subtitle
-
 						return (
-							<div key={item.node.id} className={styles.card}>
-								{treatmentImage && (
-									<img
-										src={treatmentImage}
-										alt={treatmentTitle}
-										className={styles.cardImage}
-										width={330}
-										height={330}
-										style={{ objectFit: 'cover' }}
-									/>
-								)}
-								<div className={styles.cardContent}>
-									<h3 className={styles.cardTitle}>{treatmentTitle}</h3>
-									<p style={{ color: '#666666' }}>{treatmentSubtitle}</p>
-									<Button
-										text='View Treatment'
-										secondary={false}
-										link={`/treatment/${item.node.id}`}
-									/>
-								</div>
-							</div>
+							<Card
+								key={item.node.id}
+								title={item.node.title}
+								subtitle={item.node.treatmentFields.subtitle}
+								image={item.node.treatmentFields.image.node.link}
+								underline
+								button
+							/>
 						)
 					}
 
 					// benefit fie
 					if ('benefitFields' in item.node) {
-						const benefitImage = item.node.benefitFields.image.node.link
-						const benefitTitle = item.node.title
-						const benefitSubtitle = item.node.benefitFields?.subtitle
-
 						return (
-							<div key={item.node.id} className={styles.card}>
-								{benefitImage && (
-									<img
-										src={benefitImage}
-										alt={benefitTitle}
-										width={154}
-										height={154}
-										style={{
-											objectFit: 'cover',
-											display: 'block',
-											margin: '0 auto'
-										}}
-									/>
-								)}
-								<div className={styles.cardContent}>
-									<h3 className={styles.cardTitle}>{benefitTitle}</h3>
-									<p style={{ color: '#666666' }}>{benefitSubtitle}</p>
-								</div>
-							</div>
+							<Card
+								key={item.node.id}
+								title={item.node.title}
+								subtitle={item.node.benefitFields.subtitle}
+								image={item.node.benefitFields.image.node.link}
+								smallImage
+							/>
 						)
 					}
 
