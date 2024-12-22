@@ -1,61 +1,46 @@
+@use '@/app/base';
+
 .hero {
-  position: relative;
-  padding: 0;
-  margin: 0 auto;
-  object-fit: cover contain;
+	background-color: #eff9fa;
+	background-size: cover;
+	background-position: top;
+	display: flex;
+	flex-direction: column;
+}
 
-  .subtitle {
-    text-transform: uppercase;
-  }
-  .title {
-    max-width: 600px;
-  }
+.buttons {
+	display: flex;
+	gap: 2rem;
+	flex-wrap: wrap;
+}
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: min(1440px, 90%);
-    margin: 0 auto !important;
+.heroHomepage {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
 
-    &.layout1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      text-align: left;
-      height: 100vh;
+	h1 {
+		text-wrap: balance;
+	}
+}
 
-      .buttonWrapper {
-        display: flex;
-        flex-direction: row;
-        gap: 1.5rem;
-      }
-    }
-    &.layout2,
-    &.layout3 {
-      height: 350px;
-      display: flex;
-      justify-content: flex-end;
-      flex-direction: column;
-      padding-bottom: 1.5rem;
-      margin-top: 9rem !important;
-      object-position: top;
-      .title {
-        order: 2;
-      }
-      .subtitle {
-        order: 1;
-      }
-    }
-    &.layout2 {
-      align-items: center;
-      text-align: center;
-      margin-bottom: auto;
-    }
-    &.layout3 {
-      text-align: left;
-      align-items: flex-start;
-    }
-  }
+.subtitle {
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 1.5rem;
+	letter-spacing: 2px;
+}
+
+@media screen and (max-width: 1024px) {
+	.heroHomepage {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.buttons {
+		gap: 1rem;
+	}
 }

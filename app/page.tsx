@@ -54,9 +54,10 @@ export default async function Home() {
 			<Hero
 				title={heroSection.title}
 				subtitle={heroSection.subtitle}
-				heroLayout={heroLayout}
 				text={heroSection.text}
 				image={heroSection.image.node.link}
+				fullHeight
+				isHomepage
 			/>
 
 			{/* treatments section */}
