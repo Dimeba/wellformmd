@@ -22,6 +22,8 @@ interface Props {
 		text: string
 		link: string
 	}
+	green?: boolean
+	subscribe?: boolean
 }
 
 const DoubleSection: React.FC<Props> = ({
@@ -33,11 +35,13 @@ const DoubleSection: React.FC<Props> = ({
 	image2,
 	reverse,
 	button1,
-	button2
+	button2,
+	green,
+	subscribe
 }) => {
 	return (
 		<section
-			className={styles.doubleSection}
+			className={`${styles.doubleSection} ${green ? styles.green : ''}`}
 			style={{ flexDirection: reverse ? 'row-reverse' : 'row' }}
 		>
 			{/* Text */}
@@ -62,12 +66,19 @@ const DoubleSection: React.FC<Props> = ({
 						</div>
 					)}
 
-					<p className={styles.smallText}>{smallText}</p>
+					{subscribe && (
+						<div className={styles.subscribeForm}>
+							<input type='email' placeholder='Enter your e-mail' />
+							<button>Subscribe</button>
+						</div>
+					)}
+
+					{smallText && <p className={styles.smallText}>{smallText}</p>}
 				</div>
 			</div>
 
 			{/* Images */}
-			{image2 && image && (
+			{image2 && image ? (
 				<div
 					className={styles.column}
 					style={{
@@ -110,6 +121,20 @@ const DoubleSection: React.FC<Props> = ({
 								/>
 							</div>
 						</div>
+					</div>
+				</div>
+			) : (
+				// Single image
+				<div className={styles.column}>
+					<div className={styles.singleImage}>
+						{image && (
+							<Image
+								src={image}
+								alt={`${title} image.`}
+								fill
+								style={{ objectFit: 'cover' }}
+							/>
+						)}
 					</div>
 				</div>
 			)}

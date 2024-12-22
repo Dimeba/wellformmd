@@ -7,6 +7,19 @@
 	gap: 2rem;
 }
 
+.green {
+	background-color: base.$primary;
+	padding: 0;
+
+	* {
+		color: white;
+	}
+
+	hr {
+		background-color: white;
+	}
+}
+
 .column {
 	width: calc((100% - 2rem) / 2);
 	display: flex;
@@ -45,9 +58,58 @@
 	border-top: 1rem solid white;
 }
 
+.singleImage {
+	position: relative;
+	height: min(520px, 40vw);
+	width: 100%;
+}
+
+.subscribeForm {
+	display: flex;
+	flex-wrap: wrap;
+
+	input[type='email'] {
+		font-size: 1rem;
+		padding: 1rem 2rem;
+		border: 0;
+	}
+
+	button {
+		background-color: base.$secondary;
+		border: 0;
+		font-size: 1rem;
+		padding: 1rem 2rem;
+		cursor: pointer;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	.doubleSection {
 		flex-direction: column-reverse !important;
+	}
+
+	.green {
+		padding-bottom: 80px 0;
+		background-color: white;
+
+		p,
+		h2 {
+			color: base.$text;
+		}
+
+		h4 {
+			color: base.$secondary;
+		}
+
+		hr {
+			background-color: base.$primary;
+		}
+	}
+
+	.subscribeForm {
+		input[type='email'] {
+			background-color: rgba($color: base.$primary, $alpha: 0.2);
+		}
 	}
 
 	.column {

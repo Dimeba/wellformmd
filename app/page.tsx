@@ -41,6 +41,8 @@ export default async function Home() {
 	const benefitsSection = sections[2].sectionFields
 	const doubleSection1 = sections[3].sectionFields
 	const doubleSection2 = sections[4].sectionFields
+	const subscribeSection = sections[5].sectionFields
+	const locationSection = sections[6].sectionFields
 
 	// Treatments
 	const treatments = await getTreatments()
@@ -84,6 +86,7 @@ export default async function Home() {
 			{/* reviews */}
 			<Reviews content={reviews} />
 
+			{/* double section 1 */}
 			<DoubleSection
 				title={doubleSection1.title}
 				subtitle={doubleSection1.subtitle}
@@ -95,6 +98,7 @@ export default async function Home() {
 				button2={{ text: 'Before & After Photos', link: '/gallery' }}
 			/>
 
+			{/* double section 2 */}
 			<DoubleSection
 				title={doubleSection2.title}
 				subtitle={doubleSection2.subtitle}
@@ -105,6 +109,29 @@ export default async function Home() {
 				reverse
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{ text: 'Our Treatments', link: '/treatments' }}
+			/>
+
+			{/* subscribe section */}
+			<DoubleSection
+				title={subscribeSection.title}
+				subtitle={subscribeSection.subtitle}
+				text={subscribeSection.text}
+				image={subscribeSection.image.node.link}
+				green
+				subscribe
+			/>
+
+			{/* location section */}
+			<DoubleSection
+				title={locationSection.title}
+				subtitle={locationSection.subtitle}
+				text={locationSection.text}
+				image={locationSection.image.node.link}
+				button1={{ text: 'Book Consultation', link: '/' }}
+				button2={{
+					text: 'Get Directions',
+					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
+				}}
 			/>
 		</main>
 	)
