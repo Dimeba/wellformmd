@@ -103,7 +103,7 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 								subtitle={item.node.treatmentFields.subtitle}
 								image={item.node.treatmentFields.image.node.link}
 								underline
-								button
+								buttonText='View Treatment'
 							/>
 						)
 					}
@@ -117,6 +117,21 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 								subtitle={item.node.benefitFields.subtitle}
 								image={item.node.benefitFields.image.node.link}
 								smallImage
+							/>
+						)
+					}
+
+					//article fields
+					if ('articleFields' in item.node) {
+						return (
+							<Card
+								key={item.node.id}
+								title={item.node.title}
+								// subtitle={item.node.articleFields.category}
+								image={item.node.articleFields.image.node.link}
+								rectangle
+								underline
+								buttonText='Read Article'
 							/>
 						)
 					}

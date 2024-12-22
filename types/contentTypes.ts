@@ -120,10 +120,26 @@ export type Testimonial = {
 }
 
 // Articles
+// Benefits
+export type Articles = {
+	articles: {
+		edges: Article[]
+	}
+}
+
 export type Article = {
 	node: {
 		id: string
 		title: string
+		articleFields: {
+			category: string
+			image: {
+				node: {
+					link: string
+				}
+			}
+			text: string
+		}
 	}
 }
 

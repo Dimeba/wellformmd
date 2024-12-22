@@ -10,7 +10,8 @@ import {
 	getSectionById,
 	getTreatments,
 	getBenefits,
-	getReviews
+	getReviews,
+	getArticles
 } from '@/graphql/queries'
 
 export const metadata = {
@@ -52,6 +53,9 @@ export default async function Home() {
 
 	// Reviews
 	const reviews = await getReviews()
+
+	// Articles
+	const articles = await getArticles()
 
 	return (
 		<main>
@@ -132,6 +136,15 @@ export default async function Home() {
 					text: 'Get Directions',
 					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
 				}}
+			/>
+
+			{/* Latest Posts */}
+			<Section
+				title='Latest Posts'
+				subtitle='Our Blog'
+				cardsContent={articles}
+				cardsColumns={3}
+				slider
 			/>
 		</main>
 	)

@@ -14,6 +14,7 @@ interface Props {
 	cardsContent?: any
 	cardsFlex?: true
 	bottomButtons?: true
+	slider?: true
 }
 
 const Section: React.FC<Props> = ({
@@ -23,7 +24,8 @@ const Section: React.FC<Props> = ({
 	cardsColumns,
 	cardsContent,
 	cardsFlex,
-	bottomButtons
+	bottomButtons,
+	slider
 }) => {
 	return (
 		<section>
@@ -40,6 +42,7 @@ const Section: React.FC<Props> = ({
 						columns={cardsColumns ? cardsColumns : 4}
 						content={cardsContent}
 						cardsFlex={cardsFlex}
+						slider={slider}
 					/>
 				)}
 

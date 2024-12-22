@@ -7,7 +7,8 @@ import {
 	Section,
 	Page,
 	Benefits,
-	Reviews
+	Reviews,
+	Articles
 } from '@/types/contentTypes'
 
 const client = getGraphQLClient()
@@ -157,4 +158,33 @@ export async function getReviews() {
 	const data = await client.request<Reviews>(query)
 
 	return data.reviews.edges
+}
+
+// articles
+export async function getArticles() {
+	const query = gql`
+		query GetArticles {
+			articles {
+				edges {
+					node {
+						id
+						title
+						articleFields {
+							category
+							image {
+								node {
+									link
+								}
+							}
+							text
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<Articles>(query)
+
+	return data.articles.edges
 }

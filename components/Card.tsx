@@ -12,16 +12,18 @@ interface Props {
 	smallImage?: true
 	underline?: true
 	left?: true
-	button?: true
+	buttonText?: string
+	rectangle?: true
 }
 
 const Card: React.FC<Props> = ({
 	title,
 	subtitle,
 	image,
+	rectangle,
 	underline,
 	left,
-	button,
+	buttonText,
 	smallImage
 }) => {
 	const textStyle = left ? '' : styles.center
@@ -30,7 +32,10 @@ const Card: React.FC<Props> = ({
 		<div className={styles.card}>
 			<div
 				className={styles.image}
-				style={{ width: smallImage ? '50%' : '100%' }}
+				style={{
+					width: smallImage ? '50%' : '100%',
+					aspectRatio: rectangle ? '16/10' : '1/1'
+				}}
 			>
 				<Image src={image} alt={title} fill objectFit='cover' />
 
@@ -42,11 +47,13 @@ const Card: React.FC<Props> = ({
 				{subtitle && <p className={textStyle}>{subtitle}</p>}
 			</div>
 
-			{button && (
+			{buttonText && (
 				<Button
-					text='View Treatment'
-					secondary={false}
-					link={`/treatment/${title}`}
+					text={buttonText}
+					link={title
+						.toLowerCase()
+						.replace(/[^a-z0-9 ]/g, '')
+						.replace(/ /g, '-')}
 				/>
 			)}
 		</div>
