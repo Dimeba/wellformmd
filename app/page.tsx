@@ -1,4 +1,4 @@
-// temps components
+// components
 import Hero from '@/components/Hero'
 import Button from '@/components/Button'
 import SectionTitle from '@/components/SectionTitle'
@@ -6,6 +6,8 @@ import Cards from '@/components/Cards'
 import Review from '@/components/Review'
 import ContactSection from '@/components/Contact'
 import LocationSection from '@/components/Location'
+import Section from '@/components/Section'
+
 // queries
 import {
 	getPageById,
@@ -56,59 +58,24 @@ export default async function Home() {
 				text={heroSection.text}
 				image={heroSection.image.node.link}
 			/>
+
 			{/* treatments section */}
-			<section>
-				<div className='container'>
-					<SectionTitle
-						title={treatmentsSection.title}
-						subtitle={treatmentsSection.subtitle}
-					/>
-					<p
-						style={{
-							textAlign: 'center',
-							textWrap: 'balance',
-							marginBottom: '4rem'
-						}}
-					>
-						{treatmentsSection.text}
-					</p>
-					<Cards columns={4} content={treatments} />
-				</div>
+			<Section
+				title={treatmentsSection.title}
+				subtitle={treatmentsSection.subtitle}
+				text={treatmentsSection.text}
+				cardsContent={treatments}
+				cardsColumns={4}
+			/>
 
-				{/* benefits section */}
-
-				<div
-					className='container'
-					style={{
-						margin: '0 auto',
-						paddingTop: '7rem'
-					}}
-				>
-					<SectionTitle
-						title={benefitsSection.title}
-						subtitle={benefitsSection.subtitle}
-					/>
-
-					<Cards columns={4} content={benefits} />
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							gap: '2rem',
-							alignItems: 'center',
-							justifyContent: 'center',
-							paddingTop: '7rem'
-						}}
-					>
-						<Button
-							text='View Treatments'
-							secondary={false}
-							link='/treatment'
-						/>
-						<Button text='Special Deals' secondary={true} link='/special' />
-					</div>
-				</div>
-			</section>
+			{/* benefits section */}
+			<Section
+				title={benefitsSection.title}
+				subtitle={benefitsSection.subtitle}
+				cardsContent={benefits}
+				cardsColumns={4}
+				bottomButtons
+			/>
 
 			{/* reviews */}
 			<Review />
