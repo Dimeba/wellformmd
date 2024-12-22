@@ -34,16 +34,16 @@
 }
 
 @media screen and (max-width: 1024px) {
-	.heroBackground {
-		background-position: -850px;
-	}
-
 	.heroHomepage {
 		width: 75%;
 	}
 }
 
 @media screen and (max-width: 768px) {
+	.heroBackground {
+		background-position: -850px;
+	}
+
 	.buttons {
 		gap: 1rem;
 	}

@@ -1,0 +1,16 @@
+@use '@/app/base';
+
+.reviews {
+	background-color: base.$primary;
+}
+
+.reviewsContainer {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.image {
+	position: relative;
+}

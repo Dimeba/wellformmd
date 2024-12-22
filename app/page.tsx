@@ -1,11 +1,6 @@
 // components
 import Hero from '@/components/Hero'
-import Button from '@/components/Button'
-import SectionTitle from '@/components/SectionTitle'
-import Cards from '@/components/Cards'
-import Review from '@/components/Review'
-import ContactSection from '@/components/Contact'
-import LocationSection from '@/components/Location'
+import Reviews from '@/components/Reviews'
 import Section from '@/components/Section'
 
 // queries
@@ -13,7 +8,8 @@ import {
 	getPageById,
 	getSectionById,
 	getTreatments,
-	getBenefits
+	getBenefits,
+	getReviews
 } from '@/graphql/queries'
 
 export const metadata = {
@@ -45,10 +41,13 @@ export default async function Home() {
 
 	// Treatments
 	const treatments = await getTreatments()
+
 	// Benefits
 	const benefits = await getBenefits()
 
-	const heroLayout = 'layout1'
+	// Reviews
+	const reviews = await getReviews()
+
 	return (
 		<main>
 			<Hero
@@ -80,13 +79,7 @@ export default async function Home() {
 			/>
 
 			{/* reviews */}
-			<Review />
-
-			{/* contact section */}
-			<ContactSection />
-
-			{/* location section */}
-			<LocationSection />
+			<Reviews content={reviews} />
 		</main>
 	)
 }
