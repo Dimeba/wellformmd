@@ -5,6 +5,8 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 2rem;
+	background-size: cover;
+	background-position: bottom;
 }
 
 .green {
@@ -85,6 +87,7 @@
 @media screen and (max-width: 1024px) {
 	.doubleSection {
 		flex-direction: column-reverse !important;
+		background-image: none !important;
 	}
 
 	.green {

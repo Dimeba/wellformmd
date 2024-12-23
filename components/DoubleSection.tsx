@@ -25,6 +25,7 @@ interface Props {
 	}
 	green?: boolean
 	subscribe?: boolean
+	banner?: boolean
 }
 
 const DoubleSection: React.FC<Props> = ({
@@ -38,12 +39,16 @@ const DoubleSection: React.FC<Props> = ({
 	button1,
 	button2,
 	green,
-	subscribe
+	subscribe,
+	banner
 }) => {
 	return (
 		<section
 			className={`${styles.doubleSection} ${green ? styles.green : ''}`}
-			style={{ flexDirection: reverse ? 'row-reverse' : 'row' }}
+			style={{
+				flexDirection: reverse ? 'row-reverse' : 'row',
+				backgroundImage: banner ? `url(${image})` : 'none'
+			}}
 		>
 			{/* Text */}
 			<div
@@ -78,69 +83,77 @@ const DoubleSection: React.FC<Props> = ({
 				</AnimatedDiv>
 			</div>
 
-			{/* Images */}
-			{image2 && image ? (
-				<div
-					className={styles.column}
-					style={{
-						justifyContent: reverse ? 'flex-end' : 'flex-start'
-					}}
-				>
-					<div
-						className={`${styles.columnContent} ${styles.images}`}
-						style={
-							reverse
-								? { borderTopLeftRadius: '250px' }
-								: { borderTopRightRadius: '250px' }
-						}
-					>
-						{/* Image 1 */}
-						<Image
-							src={image}
-							alt={`${title} image.`}
-							fill
-							style={{ objectFit: 'cover' }}
-							sizes='(max-width: 768px) 100vw, 50vw'
-						/>
-
-						{/* Image 2 */}
+			{!banner && (
+				<>
+					{/* Images */}
+					{image2 && image ? (
 						<div
-							className={styles.image2}
-							style={
-								reverse
-									? { right: '0', borderLeft: '1rem solid white' }
-									: { left: '0', borderRight: '1rem solid white' }
-							}
+							className={styles.column}
+							style={{
+								justifyContent: reverse ? 'flex-end' : 'flex-start'
+							}}
 						>
 							<div
-								style={{ position: 'relative', height: '100%', width: '100%' }}
+								className={`${styles.columnContent} ${styles.images}`}
+								style={
+									reverse
+										? { borderTopLeftRadius: '250px' }
+										: { borderTopRightRadius: '250px' }
+								}
 							>
+								{/* Image 1 */}
 								<Image
-									src={image2}
+									src={image}
 									alt={`${title} image.`}
 									fill
 									style={{ objectFit: 'cover' }}
 									sizes='(max-width: 768px) 100vw, 50vw'
 								/>
+
+								{/* Image 2 */}
+								<div
+									className={styles.image2}
+									style={
+										reverse
+											? { right: '0', borderLeft: '1rem solid white' }
+											: { left: '0', borderRight: '1rem solid white' }
+									}
+								>
+									<div
+										style={{
+											position: 'relative',
+											height: '100%',
+											width: '100%'
+										}}
+									>
+										<Image
+											src={image2}
+											alt={`${title} image.`}
+											fill
+											style={{ objectFit: 'cover' }}
+											sizes='(max-width: 768px) 100vw, 50vw'
+										/>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			) : (
-				// Single image
-				<div className={styles.column}>
-					<div className={styles.singleImage}>
-						{image && (
-							<Image
-								src={image}
-								alt={`${title} image.`}
-								fill
-								style={{ objectFit: 'cover' }}
-								sizes='(max-width: 768px) 100vw, 50vw'
-							/>
-						)}
-					</div>
-				</div>
+					) : (
+						// Single image
+						<div className={styles.column}>
+							<div className={styles.singleImage}>
+								{image && (
+									<Image
+										src={image}
+										alt={`${title} image.`}
+										fill
+										style={{ objectFit: 'cover' }}
+										sizes='(max-width: 768px) 100vw, 50vw'
+									/>
+								)}
+							</div>
+						</div>
+					)}
+				</>
 			)}
 		</section>
 	)
