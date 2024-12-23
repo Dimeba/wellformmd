@@ -1,7 +1,7 @@
 import { getTreatments } from '@/graphql/queries'
 import { notFound } from 'next/navigation'
 
-interface PageProps {
+interface Props {
 	params: {
 		slug: string
 	}
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function TreatmentsSlugPage({ params }: PageProps) {
+export default async function TreatmentsSlugPage({ params }: Props) {
 	const slug = params.slug
 
 	const treatments = await getTreatments()
