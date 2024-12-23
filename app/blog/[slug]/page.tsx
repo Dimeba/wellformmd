@@ -1,6 +1,12 @@
 import { getArticles } from '@/graphql/queries'
 import { notFound } from 'next/navigation'
 
+interface PageProps {
+	params: {
+		slug: string
+	}
+}
+
 function createSlug(title: string) {
 	return title
 		.toLowerCase()
@@ -16,11 +22,7 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function BlogSlugPage({
-	params
-}: {
-	params: { slug: string }
-}) {
+export default async function BlogSlugPage({ params }: PageProps) {
 	const { slug } = params
 
 	const articles = await getArticles()
