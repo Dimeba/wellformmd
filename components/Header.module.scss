@@ -139,14 +139,28 @@
   justify-content: right;
 }
 
+@media screen and (max-width: 1400px) and (min-width: 1025px) {
+  .menuList {
+    gap: 2rem;
+  }
+  .menuItem {
+    font-size: 0.8rem;
+  }
+  .logo {
+    width: 9.35rem;
+    height: auto;
+  }
+}
 @media screen and (max-width: 1024px) {
   .header {
     background-color: white;
   }
   .navigation {
+    display: none !important;
     min-width: 100%;
     padding: 0;
     flex-direction: column;
+    align-items: center !important;
     position: absolute;
     top: 100%;
     left: 0;
@@ -158,7 +172,7 @@
   }
 
   .navigation.open {
-    display: block;
+    display: flex !important;
     opacity: 1;
   }
 
@@ -190,5 +204,8 @@
 
   .hidden {
     display: none !important;
+  }
+  .mobileBtn {
+    padding: 1rem 0;
   }
 }
