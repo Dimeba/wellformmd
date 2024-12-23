@@ -21,7 +21,7 @@ export default async function TreatmentsSlugPage({
 }: {
 	params: { slug: string }
 }) {
-	const { slug } = await params
+	const { slug } = params
 
 	const treatments = await getTreatments()
 

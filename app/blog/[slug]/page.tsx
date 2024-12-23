@@ -21,7 +21,7 @@ export default async function BlogSlugPage({
 }: {
 	params: { slug: string }
 }) {
-	const { slug } = await params
+	const { slug } = params
 
 	const articles = await getArticles()
 	const article = articles.find(
