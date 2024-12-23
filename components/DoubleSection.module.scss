@@ -26,7 +26,7 @@
 }
 
 .columnContent {
-	width: min(calc(base.$maxWidth / 2), 45vw);
+	width: min(calc((base.$maxWidth - 2rem) / 2), calc(45vw - 1rem));
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
