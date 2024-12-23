@@ -100,6 +100,7 @@ const DoubleSection: React.FC<Props> = ({
 							alt={`${title} image.`}
 							fill
 							style={{ objectFit: 'cover' }}
+							sizes='(max-width: 768px) 100vw, 50vw'
 						/>
 
 						{/* Image 2 */}
@@ -119,6 +120,7 @@ const DoubleSection: React.FC<Props> = ({
 									alt={`${title} image.`}
 									fill
 									style={{ objectFit: 'cover' }}
+									sizes='(max-width: 768px) 100vw, 50vw'
 								/>
 							</div>
 						</div>
@@ -134,6 +136,7 @@ const DoubleSection: React.FC<Props> = ({
 								alt={`${title} image.`}
 								fill
 								style={{ objectFit: 'cover' }}
+								sizes='(max-width: 768px) 100vw, 50vw'
 							/>
 						)}
 					</div>

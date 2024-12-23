@@ -40,7 +40,13 @@ const Card: React.FC<Props> = ({
 					aspectRatio: rectangle ? '16/10' : '1/1'
 				}}
 			>
-				<Image src={image} alt={title} fill objectFit='cover' />
+				<Image
+					src={image}
+					alt={title}
+					fill
+					style={{ objectFit: 'cover' }}
+					sizes='(max-width: 768px) 100vw, 50vw'
+				/>
 
 				{underline && <div className={styles.underline}></div>}
 			</div>
