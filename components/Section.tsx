@@ -15,6 +15,7 @@ interface Props {
 	cardsFlex?: true
 	bottomButtons?: true
 	slider?: true
+	hideTitle?: true
 }
 
 const Section: React.FC<Props> = ({
@@ -25,17 +26,20 @@ const Section: React.FC<Props> = ({
 	cardsContent,
 	cardsFlex,
 	bottomButtons,
-	slider
+	slider,
+	hideTitle
 }) => {
 	return (
 		<section>
 			<div className='container'>
-				<SectionTitle
-					title={title}
-					subtitle={subtitle}
-					text={text}
-					hideDivider={text == undefined}
-				/>
+				{!hideTitle && (
+					<SectionTitle
+						title={title}
+						subtitle={subtitle}
+						text={text}
+						hideDivider={text == undefined}
+					/>
+				)}
 
 				{cardsContent && (
 					<Cards
