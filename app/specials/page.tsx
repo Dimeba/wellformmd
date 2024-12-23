@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 // components
 import Hero from '@/components/Hero'
+import DoubleSection from '@/components/DoubleSection'
 
 // queries
 import { getPageById, getSectionById } from '@/graphql/queries'
@@ -24,13 +25,38 @@ export default async function Specials() {
 	}
 
 	const heroSection = sections[0]?.sectionFields
+	const subscribeSection = sections[1].sectionFields
+	const locationSection = sections[2].sectionFields
 
 	return (
-		<div>
+		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
 			/>
-		</div>
+
+			{/* subscribe section */}
+			<DoubleSection
+				title={subscribeSection.title}
+				subtitle={subscribeSection.subtitle}
+				text={subscribeSection.text}
+				image={subscribeSection.image.node.link}
+				green
+				subscribe
+			/>
+
+			{/* location section */}
+			<DoubleSection
+				title={locationSection.title}
+				subtitle={locationSection.subtitle}
+				text={locationSection.text}
+				image={locationSection.image.node.link}
+				button1={{ text: 'Book Consultation', link: '/' }}
+				button2={{
+					text: 'Get Directions',
+					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
+				}}
+			/>
+		</main>
 	)
 }

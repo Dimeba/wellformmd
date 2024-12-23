@@ -44,7 +44,7 @@ export default async function Blog() {
 	const testimonials = await getTestimonials()
 
 	return (
-		<div>
+		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
@@ -95,6 +95,6 @@ export default async function Blog() {
 				cardsColumns={4}
 				slider
 			/>
-		</div>
+		</main>
 	)
 }

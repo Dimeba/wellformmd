@@ -25,11 +25,11 @@ export default async function About() {
 	const heroSection = sections[0]?.sectionFields
 
 	return (
-		<div>
+		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
 			/>
-		</div>
+		</main>
 	)
 }

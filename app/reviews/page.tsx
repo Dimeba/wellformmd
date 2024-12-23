@@ -33,7 +33,7 @@ export default async function Reviews() {
 	const testimonials = await getTestimonials()
 
 	return (
-		<div>
+		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
@@ -61,6 +61,6 @@ export default async function Reviews() {
 					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
 				}}
 			/>
-		</div>
+		</main>
 	)
 }

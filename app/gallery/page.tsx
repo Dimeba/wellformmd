@@ -26,11 +26,11 @@ export default async function Gallery() {
 	const heroSection = sections[0]?.sectionFields
 
 	return (
-		<div>
+		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
 			/>
-		</div>
+		</main>
 	)
 }
