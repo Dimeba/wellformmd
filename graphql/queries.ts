@@ -9,7 +9,8 @@ import {
 	Benefits,
 	Reviews,
 	Articles,
-	Testimonials
+	Testimonials,
+	Article
 } from '@/types/contentTypes'
 
 const client = getGraphQLClient()

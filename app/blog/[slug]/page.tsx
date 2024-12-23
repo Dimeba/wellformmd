@@ -1,20 +1,38 @@
-import { getArticles } from "@/graphql/queries";
+import { getArticles } from '@/graphql/queries'
+import { notFound } from 'next/navigation'
 
 function createSlug(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, "")
-    .replace(/\s+/g, "-");
+	return title
+		.toLowerCase()
+		.replace(/[^a-z0-9 ]/g, '')
+		.replace(/\s+/g, '-')
 }
 
 export async function generateStaticParams() {
-  const articles = await getArticles();
+	const articles = await getArticles()
 
-  return articles.map(({ node }) => ({
-    slug: createSlug(node.title),
-  }));
+	return articles.map(({ node }: { node: { title: string } }) => ({
+		slug: createSlug(node.title)
+	}))
 }
 
-export default function BlogSlugPage() {
-  return <main></main>;
+export default async function BlogSlugPage({
+	params
+}: {
+	params: { slug: string }
+}) {
+	const { slug } = await params
+
+	const articles = await getArticles()
+	const article = articles.find(
+		({ node }: { node: { title: string } }) => createSlug(node.title) === slug
+	)
+
+	if (!article) {
+		notFound()
+	}
+
+	console.log(article.node.title)
+
+	return <main></main>
 }
