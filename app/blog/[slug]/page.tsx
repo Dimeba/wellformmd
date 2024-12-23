@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogSlugPage({ params }: PageProps) {
-	const { slug } = params
+	const slug = params.slug
 
 	const articles = await getArticles()
 	const article = articles.find(
@@ -34,7 +34,5 @@ export default async function BlogSlugPage({ params }: PageProps) {
 		notFound()
 	}
 
-	console.log(article.node.title)
-
-	return <main></main>
+	return <main>...</main>
 }

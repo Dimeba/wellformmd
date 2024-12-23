@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export default async function TreatmentsSlugPage({ params }: PageProps) {
-	const { slug } = params
+	const slug = params.slug
 
 	const treatments = await getTreatments()
 
