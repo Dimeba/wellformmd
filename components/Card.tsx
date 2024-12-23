@@ -4,6 +4,7 @@ import styles from './Card.module.scss'
 // components
 import Image from 'next/image'
 import Button from './Button'
+import AnimatedDiv from './AnimatedDiv'
 
 interface Props {
 	title: string
@@ -14,6 +15,7 @@ interface Props {
 	left?: true
 	buttonText?: string
 	rectangle?: true
+	folder?: string
 }
 
 const Card: React.FC<Props> = ({
@@ -24,12 +26,13 @@ const Card: React.FC<Props> = ({
 	underline,
 	left,
 	buttonText,
-	smallImage
+	smallImage,
+	folder
 }) => {
 	const textStyle = left ? '' : styles.center
 
 	return (
-		<div className={styles.card}>
+		<AnimatedDiv cssClass={styles.card}>
 			<div
 				className={styles.image}
 				style={{
@@ -50,13 +53,13 @@ const Card: React.FC<Props> = ({
 			{buttonText && (
 				<Button
 					text={buttonText}
-					link={title
+					link={`/${folder}/${title
 						.toLowerCase()
 						.replace(/[^a-z0-9 ]/g, '')
-						.replace(/ /g, '-')}
+						.replace(/ /g, '-')}`}
 				/>
 			)}
-		</div>
+		</AnimatedDiv>
 	)
 }
 

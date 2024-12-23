@@ -5,6 +5,7 @@ import styles from './DoubleSection.module.scss'
 import SectionTitle from './SectionTitle'
 import Button from './Button'
 import Image from 'next/image'
+import AnimatedDiv from './AnimatedDiv'
 
 interface Props {
 	title: string
@@ -49,7 +50,7 @@ const DoubleSection: React.FC<Props> = ({
 				className={styles.column}
 				style={{ justifyContent: reverse ? 'flex-start' : 'flex-end' }}
 			>
-				<div className={styles.columnContent}>
+				<AnimatedDiv cssClass={styles.columnContent}>
 					<SectionTitle
 						title={title}
 						subtitle={subtitle}
@@ -74,7 +75,7 @@ const DoubleSection: React.FC<Props> = ({
 					)}
 
 					{smallText && <p className={styles.smallText}>{smallText}</p>}
-				</div>
+				</AnimatedDiv>
 			</div>
 
 			{/* Images */}

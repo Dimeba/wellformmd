@@ -104,6 +104,7 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 								image={item.node.treatmentFields.image.node.link}
 								underline
 								buttonText='View Treatment'
+								folder='treatments'
 							/>
 						)
 					}
@@ -132,6 +133,7 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 								rectangle
 								underline
 								buttonText='Read Article'
+								folder='blog'
 							/>
 						)
 					}
