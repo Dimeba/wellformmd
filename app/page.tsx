@@ -13,7 +13,8 @@ import {
 	getTreatments,
 	getBenefits,
 	getReviews,
-	getArticles
+	getArticles,
+	getTestimonials
 } from '@/graphql/queries'
 
 // metadata
@@ -55,6 +56,9 @@ export default async function Home() {
 
 	// Articles
 	const articles = await getArticles()
+
+	// Testimonials
+	const testimonials = await getTestimonials()
 
 	return (
 		<main>
@@ -122,6 +126,15 @@ export default async function Home() {
 				image={subscribeSection.image.node.link}
 				green
 				subscribe
+			/>
+
+			{/* testimonials */}
+			<Section
+				title={testimonialsSection.title}
+				subtitle={testimonialsSection.subtitle}
+				cardsContent={testimonials}
+				cardsColumns={4}
+				slider
 			/>
 
 			{/* location section */}

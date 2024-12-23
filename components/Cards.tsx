@@ -1,8 +1,10 @@
 'use client'
 
 //components
-import Button from '../components/Button'
 import Card from './Card'
+import TestimonialCard from './Testimonial'
+import { IoIosArrowBack } from 'react-icons/io'
+import { IoIosArrowForward } from 'react-icons/io'
 
 // styles
 import styles from './Cards.module.scss'
@@ -81,8 +83,16 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 
 	return (
 		<div className={styles.cardsContainer}>
-			{slider && <button onClick={() => scroll(false)}>Left</button>}
-			{slider && <button onClick={() => scroll(true)}>Right</button>}
+			{slider && (
+				<button onClick={() => scroll(false)}>
+					<IoIosArrowBack size={20} fill='white' />
+				</button>
+			)}
+			{slider && (
+				<button onClick={() => scroll(true)}>
+					<IoIosArrowForward size={20} fill='white' />
+				</button>
+			)}
 			<div
 				className={`${
 					cardsFlex && !slider
@@ -94,51 +104,53 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 				style={slider ? sliderStyles : defaultStyles}
 			>
 				{content.map(item => {
-					//treatment fields
-					if ('treatmentFields' in item.node) {
-						return (
-							<Card
-								key={item.node.id}
-								title={item.node.title}
-								subtitle={item.node.treatmentFields.subtitle}
-								image={item.node.treatmentFields.image.node.link}
-								underline
-								buttonText='View Treatment'
-								folder='treatments'
-							/>
-						)
+					switch (true) {
+						case 'treatmentFields' in item.node:
+							return (
+								<Card
+									key={item.node.id}
+									title={item.node.title}
+									subtitle={item.node.treatmentFields.subtitle}
+									image={item.node.treatmentFields.image.node.link}
+									underline
+									buttonText='View Treatment'
+									folder='treatments'
+								/>
+							)
+						case 'benefitFields' in item.node:
+							return (
+								<Card
+									key={item.node.id}
+									title={item.node.title}
+									subtitle={item.node.benefitFields.subtitle}
+									image={item.node.benefitFields.image.node.link}
+									smallImage
+								/>
+							)
+						case 'articleFields' in item.node:
+							return (
+								<Card
+									key={item.node.id}
+									title={item.node.title}
+									image={item.node.articleFields.image.node.link}
+									rectangle
+									underline
+									buttonText='Read Article'
+									folder='blog'
+								/>
+							)
+						case 'testimonialFields' in item.node:
+							return (
+								<TestimonialCard
+									key={item.node.id}
+									text={item.node.testimonialFields.text}
+									name={item.node.title}
+									image={item.node.testimonialFields.image.node.link}
+								/>
+							)
+						default:
+							return null
 					}
-
-					// benefit fie
-					if ('benefitFields' in item.node) {
-						return (
-							<Card
-								key={item.node.id}
-								title={item.node.title}
-								subtitle={item.node.benefitFields.subtitle}
-								image={item.node.benefitFields.image.node.link}
-								smallImage
-							/>
-						)
-					}
-
-					//article fields
-					if ('articleFields' in item.node) {
-						return (
-							<Card
-								key={item.node.id}
-								title={item.node.title}
-								// subtitle={item.node.articleFields.category}
-								image={item.node.articleFields.image.node.link}
-								rectangle
-								underline
-								buttonText='Read Article'
-								folder='blog'
-							/>
-						)
-					}
-
-					return null
 				})}
 			</div>
 		</div>

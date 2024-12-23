@@ -9,15 +9,18 @@
 		z-index: 1;
 		top: 50%;
 		cursor: pointer;
-		opacity: 0.5;
-		width: 3rem;
+		background-color: rgba($color: base.$secondary, $alpha: 0.5);
+		width: 2rem;
 		aspect-ratio: 1 / 1;
 		border-radius: 50px;
 		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	button:hover {
-		opacity: 1;
+		background-color: rgba($color: base.$secondary, $alpha: 1);
 	}
 
 	button:first-of-type {

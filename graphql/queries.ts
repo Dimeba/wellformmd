@@ -8,7 +8,8 @@ import {
 	Page,
 	Benefits,
 	Reviews,
-	Articles
+	Articles,
+	Testimonials
 } from '@/types/contentTypes'
 
 const client = getGraphQLClient()
@@ -187,4 +188,32 @@ export async function getArticles() {
 	const data = await client.request<Articles>(query)
 
 	return data.articles.edges
+}
+
+// testimonials
+export async function getTestimonials() {
+	const query = gql`
+		query GetTestimonials {
+			testimonials {
+				edges {
+					node {
+						id
+						title
+						testimonialFields {
+							text
+							image {
+								node {
+									link
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<Testimonials>(query)
+
+	return data.testimonials.edges
 }

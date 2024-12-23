@@ -112,15 +112,28 @@ export type Review = {
 }
 
 // Testimonials
+export type Testimonials = {
+	testimonials: {
+		edges: Testimonial[]
+	}
+}
+
 export type Testimonial = {
 	node: {
 		id: string
 		title: string
+		testimonialFields: {
+			text: string
+			image: {
+				node: {
+					link: string
+				}
+			}
+		}
 	}
 }
 
 // Articles
-// Benefits
 export type Articles = {
 	articles: {
 		edges: Article[]
