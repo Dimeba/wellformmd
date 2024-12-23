@@ -1,7 +1,7 @@
 @use '@/app/base';
 
 .hero {
-	background-color: #eff9fa;
+	background-color: base.$light;
 	background-size: cover;
 	background-position: top;
 	display: flex;

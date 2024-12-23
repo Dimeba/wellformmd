@@ -1,7 +1,17 @@
-import { getPageById, getSectionById } from '@/graphql/queries'
-import Hero from '../../components/Hero'
+import type { Metadata } from 'next'
 
-export default async function BlogSlugPage() {
+// components
+import Hero from '@/components/Hero'
+
+// queries
+import { getPageById, getSectionById } from '@/graphql/queries'
+
+// metadata
+export const metadata: Metadata = {
+	title: 'Wellform MD - Gallery'
+}
+
+export default async function Gallery() {
 	const page = await getPageById('cG9zdDo1MjE=')
 	const sections = []
 

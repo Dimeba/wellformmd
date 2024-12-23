@@ -1,10 +1,17 @@
-//queries
+import type { Metadata } from 'next'
+
+// components
+import Hero from '@/components/Hero'
+
+// queries
 import { getPageById, getSectionById, getTreatments } from '@/graphql/queries'
 
-//components
-import Hero from '../../components/Hero'
+// metadata
+export const metadata: Metadata = {
+	title: 'Wellform MD - About Us'
+}
 
-export default async function AboutSlugPage() {
+export default async function About() {
 	const page = await getPageById('cG9zdDo1MjA=')
 	const sections = []
 

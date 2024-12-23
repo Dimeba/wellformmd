@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 // components
 import Hero from '@/components/Hero'
 import Reviews from '@/components/Reviews'
@@ -14,13 +16,9 @@ import {
 	getArticles
 } from '@/graphql/queries'
 
-export const metadata = {
-	title: 'Wellform MD - Weight Loss & Wellness',
-	description: 'Weight Loss & Wellness',
-	icons: {
-		icon: '/favicon.svg'
-	},
-	keywords: ['health', 'wellness', 'Iowa', 'nutrition', 'coaching']
+// metadata
+export const metadata: Metadata = {
+	title: 'Wellform MD - Weight Loss & Wellness'
 }
 
 export default async function Home() {
