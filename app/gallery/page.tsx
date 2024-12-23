@@ -2,9 +2,12 @@ import type { Metadata } from 'next'
 
 // components
 import Hero from '@/components/Hero'
+import Section from '@/components/Section'
+import DoubleSection from '@/components/DoubleSection'
+import Reviews from '@/components/Reviews'
 
 // queries
-import { getPageById, getSectionById } from '@/graphql/queries'
+import { getPageById, getSectionById, getReviews } from '@/graphql/queries'
 
 // metadata
 export const metadata: Metadata = {
@@ -23,13 +26,34 @@ export default async function Gallery() {
 		}
 	}
 
+	// Sections
 	const heroSection = sections[0]?.sectionFields
+	const locationSection = sections[1].sectionFields
+
+	// Reviews
+	const reviews = await getReviews()
 
 	return (
 		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
+			/>
+
+			{/* reviews */}
+			<Reviews content={reviews} />
+
+			{/* location section */}
+			<DoubleSection
+				title={locationSection.title}
+				subtitle={locationSection.subtitle}
+				text={locationSection.text}
+				image={locationSection.image.node.link}
+				button1={{ text: 'Book Consultation', link: '/' }}
+				button2={{
+					text: 'Get Directions',
+					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
+				}}
 			/>
 		</main>
 	)
