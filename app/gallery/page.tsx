@@ -16,15 +16,12 @@ export const metadata: Metadata = {
 
 export default async function Gallery() {
 	const page = await getPageById('cG9zdDo1MjE=')
-	const sections = []
 
-	// Getting the sections
-	if (page.pageFields.sections && page.pageFields.sections.edges) {
-		for (const edge of page.pageFields.sections.edges) {
-			const section = await getSectionById(edge.node.id)
-			sections.push(section)
-		}
-	}
+	const edges = page?.pageFields?.sections?.edges ?? []
+	const sectionIds = edges.map(edge => edge.node.id)
+
+	// Fetch all sections in parallel
+	const sections = await Promise.all(sectionIds.map(id => getSectionById(id)))
 
 	// Sections
 	const heroSection = sections[0]?.sectionFields
