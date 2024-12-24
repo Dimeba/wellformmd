@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Reviews() {
-	const page = await getPageById('cG9zdDoyMTYz')
+	const page = await getPageById('cG9zdDoxNTc3')
 
 	const edges = page?.pageFields?.sections?.edges ?? []
 	const sectionIds = edges.map(edge => edge.node.id)
