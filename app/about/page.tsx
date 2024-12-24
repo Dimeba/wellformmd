@@ -11,7 +11,8 @@ import {
 	getPageById,
 	getSectionById,
 	getReviews,
-	getTeamMembers
+	getTeamMembers,
+	getImages
 } from '@/graphql/queries'
 
 // metadata
@@ -34,7 +35,13 @@ export default async function About() {
 
 	// Reviews
 	const reviews = await getReviews()
+	// Team members
 	const teamMembers = await getTeamMembers()
+	// Images
+	const images = await getImages()
+	const filteredImages = images?.filter(
+		image => image?.node.imageFields.addToAbout == true
+	)
 
 	return (
 		<main>
@@ -43,6 +50,17 @@ export default async function About() {
 				title={heroSection?.title || ''}
 			/>
 
+			{/* images */}
+			<Section
+				title='Gallery'
+				cardsColumns={3}
+				cardsContent={filteredImages}
+				slider
+				fullWidth
+				hideTitle
+			/>
+
+			{/* team */}
 			<Section
 				title='Meet our Physicians'
 				subtitle='OurTeam'

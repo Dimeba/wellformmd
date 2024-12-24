@@ -12,7 +12,8 @@ import {
 	Testimonials,
 	Article,
 	Specials,
-	TeamMembers
+	TeamMembers,
+	Images
 } from '@/types/contentTypes'
 
 const client = getGraphQLClient()
@@ -277,4 +278,28 @@ export async function getTeamMembers() {
 	const data = await client.request<TeamMembers>(query)
 
 	return data.teamMembers.edges
+}
+
+// images
+export async function getImages() {
+	const query = gql`
+		query GetMedia {
+			mediaItems(first: 500) {
+				edges {
+					node {
+						id
+						link
+						imageFields {
+							addToAbout
+							addToGallery
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<Images>(query)
+
+	return data.mediaItems.edges
 }

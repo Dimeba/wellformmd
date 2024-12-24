@@ -16,6 +16,7 @@ interface Props {
 	buttonText?: string
 	rectangle?: true
 	folder?: string
+	hideText?: true
 }
 
 const Card: React.FC<Props> = ({
@@ -27,7 +28,8 @@ const Card: React.FC<Props> = ({
 	left,
 	buttonText,
 	smallImage,
-	folder
+	folder,
+	hideText
 }) => {
 	const textStyle = left ? '' : styles.center
 
@@ -51,11 +53,12 @@ const Card: React.FC<Props> = ({
 				{underline && <div className={styles.underline}></div>}
 			</div>
 
-			<div className={styles.text}>
-				<h3 className={textStyle}>{title}</h3>
-				{subtitle && <p className={textStyle}>{subtitle}</p>}
-			</div>
-
+			{!hideText && (
+				<div className={styles.text}>
+					<h3 className={textStyle}>{title}</h3>
+					{subtitle && <p className={textStyle}>{subtitle}</p>}
+				</div>
+			)}
 			{buttonText && (
 				<Button
 					text={buttonText}

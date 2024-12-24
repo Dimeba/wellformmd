@@ -21,7 +21,8 @@ import {
 	Testimonial,
 	Article,
 	TeamMember,
-	Special
+	Special,
+	Image
 } from '@/types/contentTypes'
 
 interface Props {
@@ -34,6 +35,7 @@ interface Props {
 		| Article[]
 		| TeamMember[]
 		| Special[]
+		| Image[]
 	cardsFlex?: true
 	fullWidth?: true
 }
@@ -193,6 +195,16 @@ const Cards: React.FC<Props> = ({
 									title={item.node.title}
 									bio={item.node.teamMemberFields.bio}
 									image={item.node.teamMemberFields.image.node.link}
+								/>
+							)
+						case 'imageFields' in item.node:
+							return (
+								<Card
+									key={item.node.id}
+									title={item.node.id}
+									image={item.node.link}
+									rectangle
+									hideText
 								/>
 							)
 						default:

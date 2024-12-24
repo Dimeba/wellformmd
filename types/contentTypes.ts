@@ -201,3 +201,21 @@ export type TeamMember = {
 		}
 	}
 }
+
+// Images
+export type Images = {
+	mediaItems: {
+		edges: Image[]
+	}
+}
+
+export type Image = {
+	node: {
+		id: string
+		link: string
+		imageFields: {
+			addToAbout: boolean
+			addToGallery: boolean
+		}
+	}
+}
