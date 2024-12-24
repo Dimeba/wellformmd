@@ -23,9 +23,9 @@ interface Params {
 export default async function TreatmentsSlugPage({
 	params
 }: {
-	params: Params
+	params: Promise<{ slug: string }>
 }) {
-	const slug = params.slug
+	const slug = (await params).slug
 
 	const treatments = await getTreatments()
 

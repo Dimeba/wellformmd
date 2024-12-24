@@ -16,12 +16,12 @@ export async function generateStaticParams() {
 	}))
 }
 
-interface Params {
-	slug: string
-}
-
-export default async function BlogSlugPage({ params }: { params: Params }) {
-	const slug = params.slug
+export default async function BlogSlugPage({
+	params
+}: {
+	params: Promise<{ slug: string }>
+}) {
+	const slug = (await params).slug
 
 	const articles = await getArticles()
 	const article = articles.find(
