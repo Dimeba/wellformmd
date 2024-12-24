@@ -21,7 +21,6 @@ import HamburgerMenu from './Hamburger'
 
 //types
 import { Treatment } from '@/types/contentTypes'
-import { it } from 'node:test'
 
 //slug
 const createSlug = (title: string): string => {
@@ -29,6 +28,7 @@ const createSlug = (title: string): string => {
 		.toLowerCase()
 		.replace(/[^a-z0-9 ]/g, '')
 		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-')
 }
 
 interface MenuItem {
@@ -178,7 +178,8 @@ const Header: React.FC<Props> = ({ treatments }) => {
 																	href={`/treatments/${item.node.title
 																		.toLowerCase()
 																		.replace(/[^a-z0-9 ]/g, '')
-																		.replace(/ /g, '-')}`}
+																		.replace(/ /g, '-')
+																		.replace(/-+/g, '-')}`}
 																	className={styles.dropdownLink}
 																	onClick={() => setActiveSubmenu(false)}
 																>

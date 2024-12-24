@@ -10,7 +10,8 @@ import {
 	getPageById,
 	getSectionById,
 	getArticles,
-	getTestimonials
+	getTestimonials,
+	getPageAndSections
 } from '@/graphql/queries'
 
 // metadata
@@ -19,18 +20,16 @@ export const metadata: Metadata = {
 }
 
 export default async function Blog() {
-	const page = await getPageById('cG9zdDoxNTIz')
+	const data = await getPageAndSections('cG9zdDoxNTIz')
 
-	const edges = page?.pageFields?.sections?.edges ?? []
-	const sectionIds = edges.map(edge => edge.node.id)
+	const { props } = data
 
-	// Fetch all sections in parallel
-	const sections = await Promise.all(sectionIds.map(id => getSectionById(id)))
+	const sections = props.sections
 
 	// Sections
-	const heroSection = sections[0]?.sectionFields
-	const subscribeSection = sections[1]?.sectionFields
-	const testimonialsSection = sections[2]?.sectionFields
+	const heroSection = sections[0]?.node.sectionFields
+	const subscribeSection = sections[1]?.node.sectionFields
+	const testimonialsSection = sections[2]?.node.sectionFields
 
 	// Articles
 	const articles = await getArticles()

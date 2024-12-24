@@ -14,7 +14,8 @@ import {
 	getBenefits,
 	getReviews,
 	getArticles,
-	getTestimonials
+	getTestimonials,
+	getPageAndSections
 } from '@/graphql/queries'
 
 // metadata
@@ -24,23 +25,20 @@ export const metadata: Metadata = {
 
 export default async function Home() {
 	// Getting the page
-	const page = await getPageById('cG9zdDo2ODU=')
+	const data = await getPageAndSections('cG9zdDo2ODU=')
+	const { props } = data
 
-	const edges = page?.pageFields?.sections?.edges ?? []
-	const sectionIds = edges.map(edge => edge.node.id)
-
-	// Fetch all sections in parallel
-	const sections = await Promise.all(sectionIds.map(id => getSectionById(id)))
+	const sections = props.sections
 
 	// Sections
-	const heroSection = sections[0]?.sectionFields
-	const treatmentsSection = sections[1]?.sectionFields
-	const benefitsSection = sections[2]?.sectionFields
-	const doubleSection1 = sections[3]?.sectionFields
-	const doubleSection2 = sections[4]?.sectionFields
-	const subscribeSection = sections[5]?.sectionFields
-	const testimonialsSection = sections[6]?.sectionFields
-	const locationSection = sections[7]?.sectionFields
+	const heroSection = sections[0]?.node.sectionFields
+	const treatmentsSection = sections[1]?.node.sectionFields
+	const benefitsSection = sections[2]?.node.sectionFields
+	const doubleSection1 = sections[3]?.node.sectionFields
+	const doubleSection2 = sections[4]?.node.sectionFields
+	const subscribeSection = sections[5]?.node.sectionFields
+	const testimonialsSection = sections[7]?.node.sectionFields
+	const locationSection = sections[6]?.node.sectionFields
 
 	// Treatments
 	const treatments = await getTreatments()

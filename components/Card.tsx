@@ -65,7 +65,8 @@ const Card: React.FC<Props> = ({
 					link={`/${folder}/${title
 						.toLowerCase()
 						.replace(/[^a-z0-9 ]/g, '')
-						.replace(/ /g, '-')}`}
+						.replace(/ /g, '-')
+						.replace(/-+/g, '-')}`}
 				/>
 			)}
 		</AnimatedDiv>

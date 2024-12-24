@@ -6,7 +6,12 @@ import Section from '@/components/Section'
 import DoubleSection from '@/components/DoubleSection'
 
 // queries
-import { getPageById, getSectionById, getSpecials } from '@/graphql/queries'
+import {
+	getPageById,
+	getSectionById,
+	getSpecials,
+	getPageAndSections
+} from '@/graphql/queries'
 
 // metadata
 export const metadata: Metadata = {
@@ -14,17 +19,15 @@ export const metadata: Metadata = {
 }
 
 export default async function Specials() {
-	const page = await getPageById('cG9zdDoxNTM4')
+	const data = await getPageAndSections('cG9zdDoxNTM4')
 
-	const edges = page?.pageFields?.sections?.edges ?? []
-	const sectionIds = edges.map(edge => edge.node.id)
+	const { props } = data
 
-	// Fetch all sections in parallel
-	const sections = await Promise.all(sectionIds.map(id => getSectionById(id)))
+	const sections = props.sections
 
-	const heroSection = sections[0]?.sectionFields
-	const subscribeSection = sections[1]?.sectionFields
-	const locationSection = sections[2]?.sectionFields
+	const heroSection = sections[0]?.node.sectionFields
+	const subscribeSection = sections[1]?.node.sectionFields
+	const locationSection = sections[2]?.node.sectionFields
 
 	// Specials
 	const specials = await getSpecials()

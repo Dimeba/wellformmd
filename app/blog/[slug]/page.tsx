@@ -13,6 +13,7 @@ function createSlug(title: string) {
 		.toLowerCase()
 		.replace(/[^a-z0-9 ]/g, '')
 		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-')
 }
 
 export async function generateStaticParams() {

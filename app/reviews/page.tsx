@@ -6,7 +6,12 @@ import Section from '@/components/Section'
 import DoubleSection from '@/components/DoubleSection'
 
 // queries
-import { getPageById, getSectionById, getTestimonials } from '@/graphql/queries'
+import {
+	getPageById,
+	getSectionById,
+	getTestimonials,
+	getPageAndSections
+} from '@/graphql/queries'
 
 // metadata
 export const metadata: Metadata = {
@@ -14,17 +19,15 @@ export const metadata: Metadata = {
 }
 
 export default async function Reviews() {
-	const page = await getPageById('cG9zdDoxNTc3')
+	const data = await getPageAndSections('cG9zdDoxNTc3')
 
-	const edges = page?.pageFields?.sections?.edges ?? []
-	const sectionIds = edges.map(edge => edge.node.id)
+	const { props } = data
 
-	// Fetch all sections in parallel
-	const sections = await Promise.all(sectionIds.map(id => getSectionById(id)))
+	const sections = props.sections
 
 	// Sections
-	const heroSection = sections[0]?.sectionFields
-	const locationSection = sections[1]?.sectionFields
+	const heroSection = sections[1]?.node.sectionFields
+	const locationSection = sections[0]?.node.sectionFields
 
 	// Testimonials
 	const testimonials = await getTestimonials()

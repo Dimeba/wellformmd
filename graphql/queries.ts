@@ -5,7 +5,9 @@ import { gql } from 'graphql-request'
 import {
 	Treatments,
 	Section,
+	Sections,
 	Page,
+	PageAndSections,
 	Benefits,
 	Reviews,
 	Articles,
@@ -42,11 +44,78 @@ export async function getPageById(id: string) {
 	return data.page
 }
 
+export async function getPageAndSections(id: string) {
+	const query = gql`
+		query GetPage($id: ID!) {
+			page(id: $id) {
+				id
+				title
+				pageFields {
+					sections {
+						edges {
+							node {
+								id
+							}
+						}
+					}
+				}
+			}
+			sections(first: 50) {
+				edges {
+					node {
+						id
+						title
+						sectionFields {
+							title
+							subtitle
+							text
+							smallText
+							image {
+								node {
+									link
+								}
+							}
+							image2 {
+								node {
+									link
+								}
+							}
+							customText
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<PageAndSections>(query, { id })
+
+	// Extract IDs of sections included on the page
+	const includedSectionIds = data.page.pageFields.sections.edges.map(
+		(edge: { node: { id: string } }) => edge.node.id
+	)
+
+	// Filter the full list of sections
+	const filteredSections = data.sections.edges.filter(
+		(edge: { node: { id: string } }) =>
+			includedSectionIds.includes(edge.node.id)
+	)
+
+	return {
+		props: {
+			page: data.page,
+			sections: filteredSections.reverse()
+		}
+	}
+}
+
 // sections
 export async function getSectionById(id: string) {
 	const query = gql`
 		query GetSection($id: ID!) {
 			section(id: $id) {
+				id
+				title
 				sectionFields {
 					addPosts
 					image {

@@ -14,9 +14,84 @@ export type Page = {
 	}
 }
 
+export type PageAndSections = {
+	page: {
+		id: string
+		title: string
+		pageFields: {
+			sections: {
+				edges: {
+					node: {
+						id: string
+					}
+				}[]
+			}
+		}
+	}
+	sections: {
+		edges: {
+			node: {
+				id: string
+				title: string
+				sectionFields: {
+					title: string
+					subtitle: string
+					text: string
+					smallText: string
+					image: {
+						node: {
+							link: string
+						}
+					}
+					image2: {
+						node: {
+							link: string
+						}
+					}
+					customText: string
+				}
+			}
+		}[]
+	}
+}
+
 // Sections
+export type Sections = {
+	sections: {
+		edges: {
+			node: {
+				id: string
+				sectionFields: {
+					addPosts: boolean
+					image: {
+						node: {
+							link: string
+						}
+					}
+					image2: {
+						node: {
+							link: string
+						}
+					}
+					subtitle: string
+					text: string
+					smallText: string
+					title: string
+					posts: {
+						nodes: {
+							id: string
+						}[]
+					}
+					customText: string
+				}
+			}[]
+		}
+	}
+}
+
 export type Section = {
 	section: {
+		id: string
 		sectionFields: {
 			addPosts: boolean
 			image: {
