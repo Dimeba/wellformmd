@@ -35,9 +35,16 @@ interface Props {
 		| TeamMember[]
 		| Special[]
 	cardsFlex?: true
+	fullWidth?: true
 }
 
-const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
+const Cards: React.FC<Props> = ({
+	slider,
+	columns,
+	content,
+	cardsFlex,
+	fullWidth
+}) => {
 	const [windowWidth, setWindowWidth] = useState<number>(0)
 
 	// Calculate window width on window resize
@@ -93,12 +100,18 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 	return (
 		<div className={styles.cardsContainer}>
 			{slider && (
-				<button onClick={() => scroll(false)}>
+				<button
+					onClick={() => scroll(false)}
+					style={{ left: fullWidth ? 32 : 0 }}
+				>
 					<IoIosArrowBack size={20} fill='white' />
 				</button>
 			)}
 			{slider && (
-				<button onClick={() => scroll(true)}>
+				<button
+					onClick={() => scroll(true)}
+					style={{ right: fullWidth ? 32 : 0 }}
+				>
 					<IoIosArrowForward size={20} fill='white' />
 				</button>
 			)}

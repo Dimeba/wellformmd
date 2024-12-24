@@ -16,6 +16,7 @@ interface Props {
 	bottomButtons?: true
 	slider?: true
 	hideTitle?: true
+	fullWidth?: true
 }
 
 const Section: React.FC<Props> = ({
@@ -27,11 +28,12 @@ const Section: React.FC<Props> = ({
 	cardsFlex,
 	bottomButtons,
 	slider,
-	hideTitle
+	hideTitle,
+	fullWidth
 }) => {
 	return (
 		<section>
-			<div className='container'>
+			<div className={`${fullWidth ? styles.fullWidth : 'container'}`}>
 				{!hideTitle && (
 					<SectionTitle
 						title={title}
@@ -47,6 +49,7 @@ const Section: React.FC<Props> = ({
 						content={cardsContent}
 						cardsFlex={cardsFlex}
 						slider={slider}
+						fullWidth={fullWidth}
 					/>
 				)}
 
