@@ -61,6 +61,7 @@ export type Treatment = {
 					link: string
 				}
 			}
+			text: string
 		}
 	}
 }

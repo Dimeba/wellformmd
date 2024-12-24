@@ -95,6 +95,7 @@ export async function getTreatments() {
 									link
 								}
 							}
+							text
 						}
 					}
 				}

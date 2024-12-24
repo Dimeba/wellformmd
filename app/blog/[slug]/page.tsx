@@ -69,7 +69,6 @@ export default async function BlogSlugPage({
 			{/* Hero */}
 			<Hero
 				title={article.node.title}
-				// subtitle={article.node.articleFields.category}
 				image={article.node.articleFields.image.node.link}
 				hideText
 			/>
