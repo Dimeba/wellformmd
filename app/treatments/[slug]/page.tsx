@@ -1,12 +1,6 @@
 import { getTreatments } from '@/graphql/queries'
 import { notFound } from 'next/navigation'
 
-interface Props {
-	params: {
-		slug: string
-	}
-}
-
 function createSlug(title: string) {
 	return title
 		.toLowerCase()
@@ -22,7 +16,11 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function TreatmentsSlugPage({ params }: Props) {
+export default async function TreatmentsSlugPage({
+	params
+}: {
+	params: { slug: string }
+}) {
 	const slug = params.slug
 
 	const treatments = await getTreatments()
@@ -34,8 +32,6 @@ export default async function TreatmentsSlugPage({ params }: Props) {
 	if (!treatment) {
 		notFound()
 	}
-
-	console.log(treatment.node.title)
 
 	return <main></main>
 }
