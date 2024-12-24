@@ -12,15 +12,21 @@ export const metadata: Metadata = {
 	keywords: ['health', 'wellness', 'Iowa', 'nutrition', 'coaching']
 }
 
-export default function RootLayout({
+// queries
+import { getTreatments } from '@/graphql/queries'
+
+export default async function RootLayout({
 	children
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	// Treatments
+	const treatments = await getTreatments()
+
 	return (
 		<html lang='en'>
 			<body>
-				<Header />
+				<Header treatments={treatments} />
 				{children}
 				<Footer />
 			</body>
