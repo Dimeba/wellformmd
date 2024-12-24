@@ -7,7 +7,12 @@ import DoubleSection from '@/components/DoubleSection'
 import Reviews from '@/components/Reviews'
 
 // queries
-import { getPageById, getSectionById, getReviews } from '@/graphql/queries'
+import {
+	getPageById,
+	getSectionById,
+	getReviews,
+	getImages
+} from '@/graphql/queries'
 
 // metadata
 export const metadata: Metadata = {
@@ -29,12 +34,25 @@ export default async function Gallery() {
 
 	// Reviews
 	const reviews = await getReviews()
+	// Images
+	const images = await getImages()
+	const filteredImages = images?.filter(
+		image => image?.node.imageFields.addToGallery == true
+	)
 
 	return (
 		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
+			/>
+
+			{/* images */}
+			<Section
+				title='Gallery'
+				cardsColumns={3}
+				cardsContent={filteredImages}
+				hideTitle
 			/>
 
 			{/* reviews */}
