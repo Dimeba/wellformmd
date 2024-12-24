@@ -16,11 +16,11 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default async function BlogSlugPage({
-	params
-}: {
-	params: { slug: string }
-}) {
+interface Params {
+	slug: string
+}
+
+export default async function BlogSlugPage({ params }: { params: Params }) {
 	const slug = params.slug
 
 	const articles = await getArticles()
