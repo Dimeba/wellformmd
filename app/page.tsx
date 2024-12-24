@@ -63,27 +63,27 @@ export default async function Home() {
 	return (
 		<main>
 			<Hero
-				title={heroSection.title}
-				subtitle={heroSection.subtitle}
-				text={heroSection.text}
-				image={heroSection.image.node.link}
+				title={heroSection?.title}
+				subtitle={heroSection?.subtitle}
+				text={heroSection?.text}
+				image={heroSection?.image.node.link}
 				fullHeight
 				isHomepage
 			/>
 
 			{/* treatments section */}
 			<Section
-				title={treatmentsSection.title}
-				subtitle={treatmentsSection.subtitle}
-				text={treatmentsSection.text}
+				title={treatmentsSection?.title}
+				subtitle={treatmentsSection?.subtitle}
+				text={treatmentsSection?.text}
 				cardsContent={treatments}
 				cardsColumns={4}
 			/>
 
 			{/* benefits section */}
 			<Section
-				title={benefitsSection.title}
-				subtitle={benefitsSection.subtitle}
+				title={benefitsSection?.title}
+				subtitle={benefitsSection?.subtitle}
 				cardsContent={benefits}
 				cardsColumns={4}
 				cardsFlex
@@ -95,24 +95,24 @@ export default async function Home() {
 
 			{/* double section 1 */}
 			<DoubleSection
-				title={doubleSection1.title}
-				subtitle={doubleSection1.subtitle}
-				text={doubleSection1.text}
-				smallText={doubleSection1.smallText}
-				image={doubleSection1.image.node.link}
-				image2={doubleSection1.image2.node.link}
+				title={doubleSection1?.title}
+				subtitle={doubleSection1?.subtitle}
+				text={doubleSection1?.text}
+				smallText={doubleSection1?.smallText}
+				image={doubleSection1?.image.node.link}
+				image2={doubleSection1?.image2.node.link}
 				button1={{ text: 'Learn More', link: '/treatments' }}
 				button2={{ text: 'Before & After Photos', link: '/gallery' }}
 			/>
 
 			{/* double section 2 */}
 			<DoubleSection
-				title={doubleSection2.title}
-				subtitle={doubleSection2.subtitle}
-				text={doubleSection2.text}
-				smallText={doubleSection2.smallText}
-				image={doubleSection2.image.node.link}
-				image2={doubleSection2.image2.node.link}
+				title={doubleSection2?.title}
+				subtitle={doubleSection2?.subtitle}
+				text={doubleSection2?.text}
+				smallText={doubleSection2?.smallText}
+				image={doubleSection2?.image.node.link}
+				image2={doubleSection2?.image2.node.link}
 				reverse
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{ text: 'Our Treatments', link: '/treatments' }}
@@ -120,18 +120,18 @@ export default async function Home() {
 
 			{/* subscribe section */}
 			<DoubleSection
-				title={subscribeSection.title}
-				subtitle={subscribeSection.subtitle}
-				text={subscribeSection.text}
-				image={subscribeSection.image.node.link}
+				title={subscribeSection?.title}
+				subtitle={subscribeSection?.subtitle}
+				text={subscribeSection?.text}
+				image={subscribeSection?.image.node.link}
 				green
 				subscribe
 			/>
 
 			{/* testimonials */}
 			<Section
-				title={testimonialsSection.title}
-				subtitle={testimonialsSection.subtitle}
+				title={testimonialsSection?.title}
+				subtitle={testimonialsSection?.subtitle}
 				cardsContent={testimonials}
 				cardsColumns={4}
 				slider
@@ -139,10 +139,10 @@ export default async function Home() {
 
 			{/* location section */}
 			<DoubleSection
-				title={locationSection.title}
-				subtitle={locationSection.subtitle}
-				text={locationSection.text}
-				image={locationSection.image.node.link}
+				title={locationSection?.title}
+				subtitle={locationSection?.subtitle}
+				text={locationSection?.text}
+				image={locationSection?.image.node.link}
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{
 					text: 'Get Directions',

@@ -69,8 +69,8 @@ export default async function Treatments() {
 
 			{/* testimonials */}
 			<Section
-				title={testimonialsSection.title}
-				subtitle={testimonialsSection.subtitle}
+				title={testimonialsSection?.title}
+				subtitle={testimonialsSection?.subtitle}
 				cardsContent={testimonials}
 				cardsColumns={4}
 				slider
@@ -78,19 +78,19 @@ export default async function Treatments() {
 
 			{/* Banner Section */}
 			<DoubleSection
-				title={bannerSection.title}
-				text={bannerSection.text}
+				title={bannerSection?.title}
+				text={bannerSection?.text}
 				button1={{ text: 'Request FREE Consultation', link: '/' }}
-				image={bannerSection.image.node.link}
+				image={bannerSection?.image.node.link}
 				banner
 			/>
 
 			{/* location section */}
 			<DoubleSection
-				title={locationSection.title}
-				subtitle={locationSection.subtitle}
-				text={locationSection.text}
-				image={locationSection.image.node.link}
+				title={locationSection?.title}
+				subtitle={locationSection?.subtitle}
+				text={locationSection?.text}
+				image={locationSection?.image.node.link}
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{
 					text: 'Get Directions',

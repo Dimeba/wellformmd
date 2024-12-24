@@ -37,20 +37,20 @@ export default async function Specials() {
 
 			{/* subscribe section */}
 			<DoubleSection
-				title={subscribeSection.title}
-				subtitle={subscribeSection.subtitle}
-				text={subscribeSection.text}
-				image={subscribeSection.image.node.link}
+				title={subscribeSection?.title}
+				subtitle={subscribeSection?.subtitle}
+				text={subscribeSection?.text}
+				image={subscribeSection?.image.node.link}
 				green
 				subscribe
 			/>
 
 			{/* location section */}
 			<DoubleSection
-				title={locationSection.title}
-				subtitle={locationSection.subtitle}
-				text={locationSection.text}
-				image={locationSection.image.node.link}
+				title={locationSection?.title}
+				subtitle={locationSection?.subtitle}
+				text={locationSection?.text}
+				image={locationSection?.image.node.link}
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{
 					text: 'Get Directions',

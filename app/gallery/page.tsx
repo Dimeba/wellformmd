@@ -45,10 +45,10 @@ export default async function Gallery() {
 
 			{/* location section */}
 			<DoubleSection
-				title={locationSection.title}
-				subtitle={locationSection.subtitle}
-				text={locationSection.text}
-				image={locationSection.image.node.link}
+				title={locationSection?.title}
+				subtitle={locationSection?.subtitle}
+				text={locationSection?.text}
+				image={locationSection?.image.node.link}
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{
 					text: 'Get Directions',

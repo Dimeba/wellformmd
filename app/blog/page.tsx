@@ -79,18 +79,18 @@ export default async function Blog() {
 
 			{/* subscribe section */}
 			<DoubleSection
-				title={subscribeSection.title}
-				subtitle={subscribeSection.subtitle}
-				text={subscribeSection.text}
-				image={subscribeSection.image.node.link}
+				title={subscribeSection?.title}
+				subtitle={subscribeSection?.subtitle}
+				text={subscribeSection?.text}
+				image={subscribeSection?.image.node.link}
 				green
 				subscribe
 			/>
 
 			{/* testimonials */}
 			<Section
-				title={testimonialsSection.title}
-				subtitle={testimonialsSection.subtitle}
+				title={testimonialsSection?.title}
+				subtitle={testimonialsSection?.subtitle}
 				cardsContent={testimonials}
 				cardsColumns={4}
 				slider
