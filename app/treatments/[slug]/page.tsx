@@ -31,12 +31,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params
 }: {
-	params: { slug: string }
+	params: Promise<{ slug: string }>
 }): Promise<Metadata> {
 	const treatments = await getTreatments()
+	const slug = (await params).slug
 	const treatment = treatments.find(
-		({ node }: { node: { title: string } }) =>
-			createSlug(node.title) === params.slug
+		({ node }: { node: { title: string } }) => createSlug(node.title) === slug
 	)
 
 	if (!treatment) {
