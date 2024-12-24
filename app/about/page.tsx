@@ -7,7 +7,12 @@ import DoubleSection from '@/components/DoubleSection'
 import Reviews from '@/components/Reviews'
 
 // queries
-import { getPageById, getSectionById, getReviews } from '@/graphql/queries'
+import {
+	getPageById,
+	getSectionById,
+	getReviews,
+	getTeamMembers
+} from '@/graphql/queries'
 
 // metadata
 export const metadata: Metadata = {
@@ -29,12 +34,21 @@ export default async function About() {
 
 	// Reviews
 	const reviews = await getReviews()
+	const teamMembers = await getTeamMembers()
 
 	return (
 		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
+			/>
+
+			<Section
+				title='Meet our Physicians'
+				subtitle='OurTeam'
+				cardsColumns={2}
+				cardsContent={teamMembers}
+				bottomButtons
 			/>
 
 			{/* reviews */}

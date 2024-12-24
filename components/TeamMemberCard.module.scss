@@ -1,0 +1,38 @@
+@use '@/app/base';
+
+.teamMemberCard {
+	background-color: base.$light;
+	display: flex;
+}
+
+.image {
+	position: relative;
+	height: 100%;
+	width: 40%;
+	flex-shrink: 0;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 2rem;
+
+	p {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.teamMemberCard {
+		flex-direction: column;
+	}
+
+	.image {
+		height: 250px;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+}

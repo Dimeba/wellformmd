@@ -11,7 +11,8 @@ import {
 	Articles,
 	Testimonials,
 	Article,
-	Specials
+	Specials,
+	TeamMembers
 } from '@/types/contentTypes'
 
 const client = getGraphQLClient()
@@ -248,4 +249,32 @@ export async function getSpecials() {
 	const data = await client.request<Specials>(query)
 
 	return data.specials.edges
+}
+
+// specials
+export async function getTeamMembers() {
+	const query = gql`
+		query GetTeamMembers {
+			teamMembers {
+				edges {
+					node {
+						id
+						title
+						teamMemberFields {
+							bio
+							image {
+								node {
+									link
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<TeamMembers>(query)
+
+	return data.teamMembers.edges
 }

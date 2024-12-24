@@ -181,9 +181,23 @@ export type Special = {
 }
 
 // Team
+export type TeamMembers = {
+	teamMembers: {
+		edges: TeamMember[]
+	}
+}
+
 export type TeamMember = {
 	node: {
 		id: string
 		title: string
+		teamMemberFields: {
+			bio: string
+			image: {
+				node: {
+					link: string
+				}
+			}
+		}
 	}
 }

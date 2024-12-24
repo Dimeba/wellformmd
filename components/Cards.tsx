@@ -4,6 +4,7 @@
 import Card from './Card'
 import TestimonialCard from './Testimonial'
 import SpecialCard from './SpecialCard'
+import TeamMemberCard from './TeamMemberCard'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 
@@ -169,6 +170,16 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 										link: item.node.specialFields.link
 									}}
 									index={index}
+								/>
+							)
+
+						case 'teamMemberFields' in item.node:
+							return (
+								<TeamMemberCard
+									key={item.node.id}
+									title={item.node.title}
+									bio={item.node.teamMemberFields.bio}
+									image={item.node.teamMemberFields.image.node.link}
 								/>
 							)
 						default:
