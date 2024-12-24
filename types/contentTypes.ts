@@ -38,6 +38,7 @@ export type Section = {
 					id: string
 				}[]
 			}
+			customText: string
 		}
 	}
 }

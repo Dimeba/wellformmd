@@ -5,6 +5,7 @@ import Hero from '@/components/Hero'
 import Section from '@/components/Section'
 import DoubleSection from '@/components/DoubleSection'
 import Reviews from '@/components/Reviews'
+import RichTextSection from '@/components/RichTextSection'
 
 // queries
 import {
@@ -31,7 +32,8 @@ export default async function About() {
 
 	// Sections
 	const heroSection = sections[0]?.sectionFields
-	const locationSection = sections[1]?.sectionFields
+	const customTextSection = sections[1]?.sectionFields
+	const locationSection = sections[2]?.sectionFields
 
 	// Reviews
 	const reviews = await getReviews()
@@ -49,6 +51,8 @@ export default async function About() {
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
 			/>
+
+			<RichTextSection content={customTextSection?.customText || ''} />
 
 			{/* images */}
 			<Section

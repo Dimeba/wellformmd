@@ -68,6 +68,7 @@ export async function getSectionById(id: string) {
 							id
 						}
 					}
+					customText
 				}
 			}
 		}

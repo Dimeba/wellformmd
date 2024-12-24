@@ -47,7 +47,8 @@ const DoubleSection: React.FC<Props> = ({
 			className={`${styles.doubleSection} ${green ? styles.green : ''}`}
 			style={{
 				flexDirection: reverse ? 'row-reverse' : 'row',
-				backgroundImage: banner ? `url(${image})` : 'none'
+				backgroundImage: banner ? `url(${image})` : 'none',
+				padding: banner ? '5rem 0' : '0'
 			}}
 		>
 			{/* Text */}

@@ -50,6 +50,7 @@
 	position: relative;
 	grid-auto-flow: column;
 	overflow-x: auto;
+	overflow-y: hidden;
 	overscroll-behavior-inline: contain;
 	scroll-snap-type: inline mandatory;
 	scrollbar-width: none;
