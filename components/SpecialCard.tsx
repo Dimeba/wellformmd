@@ -34,7 +34,13 @@ const SpecialCard: React.FC<Props> = ({
 		>
 			{index != 0 && (
 				<div className={styles.image}>
-					<Image src={image} alt={title} fill style={{ objectFit: 'cover' }} />
+					<Image
+						src={image}
+						alt={title}
+						fill
+						style={{ objectFit: 'cover' }}
+						sizes='(max-width: 768px) 100vw, 50vw'
+					/>
 				</div>
 			)}
 
