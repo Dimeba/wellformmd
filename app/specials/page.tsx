@@ -25,8 +25,8 @@ export default async function Specials() {
 	}
 
 	const heroSection = sections[0]?.sectionFields
-	const subscribeSection = sections[1].sectionFields
-	const locationSection = sections[2].sectionFields
+	const subscribeSection = sections[1]?.sectionFields
+	const locationSection = sections[2]?.sectionFields
 
 	return (
 		<main>

@@ -34,9 +34,9 @@ export default async function Treatments() {
 
 	// Sections
 	const heroSection = sections[0]?.sectionFields
-	const testimonialsSection = sections[1].sectionFields
-	const bannerSection = sections[2].sectionFields
-	const locationSection = sections[3].sectionFields
+	const testimonialsSection = sections[1]?.sectionFields
+	const bannerSection = sections[2]?.sectionFields
+	const locationSection = sections[3]?.sectionFields
 
 	// Treatments
 	const treatments = await getTreatments()

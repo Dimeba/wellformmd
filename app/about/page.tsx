@@ -27,7 +27,7 @@ export default async function About() {
 
 	// Sections
 	const heroSection = sections[0]?.sectionFields
-	const locationSection = sections[1].sectionFields
+	const locationSection = sections[1]?.sectionFields
 
 	// Reviews
 	const reviews = await getReviews()

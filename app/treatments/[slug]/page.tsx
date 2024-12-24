@@ -16,10 +16,6 @@ export async function generateStaticParams() {
 	}))
 }
 
-interface Params {
-	slug: string
-}
-
 export default async function TreatmentsSlugPage({
 	params
 }: {

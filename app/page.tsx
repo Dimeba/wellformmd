@@ -36,14 +36,14 @@ export default async function Home() {
 	}
 
 	// Sections
-	const heroSection = sections[0].sectionFields
-	const treatmentsSection = sections[1].sectionFields
-	const benefitsSection = sections[2].sectionFields
-	const doubleSection1 = sections[3].sectionFields
-	const doubleSection2 = sections[4].sectionFields
-	const subscribeSection = sections[5].sectionFields
-	const testimonialsSection = sections[6].sectionFields
-	const locationSection = sections[7].sectionFields
+	const heroSection = sections[0]?.sectionFields
+	const treatmentsSection = sections[1]?.sectionFields
+	const benefitsSection = sections[2]?.sectionFields
+	const doubleSection1 = sections[3]?.sectionFields
+	const doubleSection2 = sections[4]?.sectionFields
+	const subscribeSection = sections[5]?.sectionFields
+	const testimonialsSection = sections[6]?.sectionFields
+	const locationSection = sections[7]?.sectionFields
 
 	// Treatments
 	const treatments = await getTreatments()

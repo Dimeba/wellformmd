@@ -32,8 +32,8 @@ export default async function Blog() {
 
 	// Sections
 	const heroSection = sections[0]?.sectionFields
-	const subscribeSection = sections[1].sectionFields
-	const testimonialsSection = sections[2].sectionFields
+	const subscribeSection = sections[1]?.sectionFields
+	const testimonialsSection = sections[2]?.sectionFields
 
 	// Articles
 	const articles = await getArticles()
