@@ -1,0 +1,75 @@
+@use '@/app/base';
+
+.specialCard {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+
+	> div {
+		width: calc(50% - 1rem);
+	}
+
+	.image {
+		position: relative;
+		// aspect-ratio: 16 / 9;
+		height: 100%;
+	}
+
+	.text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin: 4rem 0;
+	}
+}
+
+.firstCard {
+	background-position: top;
+	background-size: cover;
+
+	.text {
+		height: 100%;
+		padding: 6rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		background-color: rgba($color: black, $alpha: 0.5);
+
+		* {
+			color: white;
+		}
+
+		hr {
+			background-color: white;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.specialCard {
+		flex-direction: column;
+
+		> div {
+			width: 100%;
+		}
+
+		.text {
+			margin: 0;
+		}
+
+		.image {
+			height: 300px;
+		}
+	}
+
+	.firstCard {
+		.text {
+			padding: 4rem 0;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+}

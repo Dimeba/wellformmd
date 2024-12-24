@@ -156,6 +156,30 @@ export type Article = {
 	}
 }
 
+// Treatements
+export type Specials = {
+	specials: {
+		edges: Special[]
+	}
+}
+
+export type Special = {
+	node: {
+		id: string
+		title: string
+		specialFields: {
+			subtitle: string
+			text: string
+			link: string
+			image: {
+				node: {
+					link: string
+				}
+			}
+		}
+	}
+}
+
 // Team
 export type TeamMember = {
 	node: {

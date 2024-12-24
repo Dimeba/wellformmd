@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 
 // components
 import Hero from '@/components/Hero'
+import Section from '@/components/Section'
 import DoubleSection from '@/components/DoubleSection'
 
 // queries
-import { getPageById, getSectionById } from '@/graphql/queries'
+import { getPageById, getSectionById, getSpecials } from '@/graphql/queries'
 
 // metadata
 export const metadata: Metadata = {
@@ -25,11 +26,22 @@ export default async function Specials() {
 	const subscribeSection = sections[1]?.sectionFields
 	const locationSection = sections[2]?.sectionFields
 
+	// Specials
+	const specials = await getSpecials()
+
 	return (
 		<main>
 			<Hero
 				subtitle={heroSection?.subtitle || ''}
 				title={heroSection?.title || ''}
+			/>
+
+			{/* specials */}
+			<Section
+				title='Specials'
+				cardsContent={specials}
+				cardsColumns={1}
+				hideTitle
 			/>
 
 			{/* subscribe section */}

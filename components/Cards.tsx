@@ -3,6 +3,7 @@
 //components
 import Card from './Card'
 import TestimonialCard from './Testimonial'
+import SpecialCard from './SpecialCard'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 
@@ -18,13 +19,20 @@ import {
 	Benefit,
 	Testimonial,
 	Article,
-	TeamMember
+	TeamMember,
+	Special
 } from '@/types/contentTypes'
 
 interface Props {
 	slider?: true
-	columns: 3 | 4
-	content: Treatment[] | Benefit[] | Testimonial[] | Article[] | TeamMember[]
+	columns: 1 | 2 | 3 | 4
+	content:
+		| Treatment[]
+		| Benefit[]
+		| Testimonial[]
+		| Article[]
+		| TeamMember[]
+		| Special[]
 	cardsFlex?: true
 }
 
@@ -103,7 +111,7 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 				}`}
 				style={slider ? sliderStyles : defaultStyles}
 			>
-				{content.map(item => {
+				{content.map((item, index) => {
 					switch (true) {
 						case 'treatmentFields' in item.node:
 							return (
@@ -146,6 +154,21 @@ const Cards: React.FC<Props> = ({ slider, columns, content, cardsFlex }) => {
 									text={item.node.testimonialFields.text}
 									name={item.node.title}
 									image={item.node.testimonialFields.image.node.link}
+								/>
+							)
+						case 'specialFields' in item.node:
+							return (
+								<SpecialCard
+									key={item.node.id}
+									title={item.node.title}
+									subtitle={item.node.specialFields.subtitle}
+									text={item.node.specialFields.text}
+									image={item.node.specialFields.image.node.link}
+									button={{
+										text: 'Buy Gift Card',
+										link: item.node.specialFields.link
+									}}
+									index={index}
 								/>
 							)
 						default:

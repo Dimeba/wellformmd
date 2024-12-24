@@ -10,7 +10,7 @@ interface Props {
 	title: string
 	subtitle?: string
 	text?: string
-	cardsColumns?: 3 | 4
+	cardsColumns?: 1 | 2 | 3 | 4
 	cardsContent?: any
 	cardsFlex?: true
 	bottomButtons?: true
