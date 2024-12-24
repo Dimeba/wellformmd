@@ -12,6 +12,7 @@ interface Props {
 	fullHeight?: boolean
 	isHomepage?: boolean
 	leftAlign?: boolean
+	hideText?: boolean
 }
 
 const Hero: React.FC<Props> = ({
@@ -21,46 +22,49 @@ const Hero: React.FC<Props> = ({
 	image,
 	fullHeight,
 	isHomepage,
-	leftAlign
+	leftAlign,
+	hideText
 }) => {
 	return (
 		<section
 			className={`${styles.hero} ${isHomepage ? styles.heroBackground : ''}`}
 			style={{
 				backgroundImage: image ? `url(${image})` : 'none',
-				height: fullHeight ? '100vh' : 'auto',
+				height: fullHeight ? '100vh' : !hideText ? 'auto' : '75vh',
 				justifyContent: isHomepage ? 'center' : 'flex-end',
 				paddingTop: isHomepage ? '' : '240px'
 			}}
 		>
-			<AnimatedDiv cssClass='container'>
-				{isHomepage ? (
-					<div className={`${isHomepage ? styles.heroHomepage : ''}`}>
-						<h1>{title}</h1>
-						<p className={styles.subtitle}>{subtitle}</p>
-						<p>{text}</p>
-					</div>
-				) : (
-					<SectionTitle
-						title={title}
-						subtitle={subtitle}
-						hideDivider
-						bigTitle
-						leftAlign={leftAlign}
-					/>
-				)}
-
-				{isHomepage && (
-					<div className={styles.buttons}>
-						<Button
-							text='Book a FREE Consultation'
-							link='/book-now'
-							secondary={false}
+			{!hideText && (
+				<AnimatedDiv cssClass='container'>
+					{isHomepage ? (
+						<div className={`${isHomepage ? styles.heroHomepage : ''}`}>
+							<h1>{title}</h1>
+							<p className={styles.subtitle}>{subtitle}</p>
+							<p>{text}</p>
+						</div>
+					) : (
+						<SectionTitle
+							title={title}
+							subtitle={subtitle}
+							hideDivider
+							bigTitle
+							leftAlign={leftAlign}
 						/>
-						<Button text='Our treatments' link='/book-now' secondary={true} />
-					</div>
-				)}
-			</AnimatedDiv>
+					)}
+
+					{isHomepage && (
+						<div className={styles.buttons}>
+							<Button
+								text='Book a FREE Consultation'
+								link='/book-now'
+								secondary={false}
+							/>
+							<Button text='Our treatments' link='/book-now' secondary={true} />
+						</div>
+					)}
+				</AnimatedDiv>
+			)}
 		</section>
 	)
 }
