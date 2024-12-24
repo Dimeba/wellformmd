@@ -47,12 +47,9 @@ export default async function About() {
 
 	return (
 		<main>
-			<Hero
-				subtitle={heroSection?.subtitle || ''}
-				title={heroSection?.title || ''}
-			/>
+			<Hero subtitle={heroSection?.subtitle} title={heroSection?.title} />
 
-			<RichTextSection content={customTextSection?.customText || ''} />
+			<RichTextSection content={customTextSection?.customText} />
 
 			{/* images */}
 			<Section
