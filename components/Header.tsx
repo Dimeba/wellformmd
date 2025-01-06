@@ -31,6 +31,9 @@ const createSlug = (title: string): string => {
 		.replace(/-+/g, '-')
 }
 
+// queries
+import { getTreatments } from '@/graphql/queries'
+
 interface MenuItem {
 	title: string
 	href: string
@@ -68,16 +71,17 @@ const menuItems: MenuItem[] = [
 	{ title: 'Blog', href: '/blog' }
 ]
 
-interface Props {
-	treatments: Treatment[]
-}
-
-const Header: React.FC<Props> = ({ treatments }) => {
+const Header: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [isScrolled, setIsScrolled] = useState<boolean>(false) //state for scrolled header
 	const [activeSubmenu, setActiveSubmenu] = useState<number | false>(false) //state for submenu
 	const pathname = usePathname()
 	const isHomepage = pathname == '/'
+	const [treatments, setTreatments] = useState<Treatment[]>([])
+
+	useEffect(() => {
+		getTreatments().then(setTreatments)
+	}, [])
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen)
