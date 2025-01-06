@@ -121,7 +121,7 @@ const Header: React.FC<Props> = ({ treatments }) => {
 				<div className={`container ${styles.headerContainer}`}>
 					<Link href='/' className={styles.logoWrapper} aria-label='Homepage'>
 						<Image
-							src='/logo.svg'
+							src='/logo.png'
 							width={280}
 							height={70}
 							alt='Weight loss and wellness'
