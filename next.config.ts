@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
 				protocol: 'https',
 				hostname: 'wellform.wpengine.com',
 				pathname: '**'
+			},
+			{
+				protocol: 'https',
+				hostname: 'wellform.wpenginepowered.com',
+				pathname: '**'
 			}
 		],
 		formats: ['image/avif', 'image/webp'],
