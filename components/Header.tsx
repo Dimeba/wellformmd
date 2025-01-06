@@ -22,18 +22,6 @@ import HamburgerMenu from './Hamburger'
 //types
 import { Treatment } from '@/types/contentTypes'
 
-//slug
-const createSlug = (title: string): string => {
-	return title
-		.toLowerCase()
-		.replace(/[^a-z0-9 ]/g, '')
-		.replace(/\s+/g, '-')
-		.replace(/-+/g, '-')
-}
-
-// queries
-import { getTreatments } from '@/graphql/queries'
-
 interface MenuItem {
 	title: string
 	href: string
@@ -48,20 +36,36 @@ const menuItems: MenuItem[] = [
 		submenuTitle: 'Treatments',
 		submenu: [
 			{
-				title: 'Waist Buster',
-				href: `/treatments/${createSlug('Waist Buster')}`
+				title: 'Anti Aging Treatment',
+				href: '/treatments/anti-aging-treatment'
 			},
 			{
-				title: 'Mommy Makeover',
-				href: `/treatments/${createSlug('Mommy Makeover')}`
+				title: 'InBody 970 Body Composition Analyzer',
+				href: '/treatments/inbody-970-body-composition-analyzer'
+			},
+			{
+				title: 'UltraSmooth®Cellulite',
+				href: '/treatments/ultrasmoothcellulite'
 			},
 			{
 				title: 'UltraSlim® Fat & Weight Loss',
-				href: `/treatments/${createSlug('UltraSlim Fat & Weight Loss')}`
+				href: '/treatments/ultraslim-fat-weight-loss'
 			},
 			{
-				title: 'UltraSmooth® Cellulite',
-				href: `/treatments/${createSlug('UltraSmooth Cellulite')}`
+				title: 'Physician-led Weight Loss Program',
+				href: '/treatments/physicianled-weight-loss-program'
+			},
+			{
+				title: 'Body Contouring',
+				href: '/treatments/body-contouring'
+			},
+			{
+				title: 'Mommy Makeover',
+				href: '/treatments/mommy-makeover'
+			},
+			{
+				title: 'Waist Buster',
+				href: '/treatments/waist-buster'
 			}
 		]
 	},
@@ -77,11 +81,6 @@ const Header: React.FC = () => {
 	const [activeSubmenu, setActiveSubmenu] = useState<number | false>(false) //state for submenu
 	const pathname = usePathname()
 	const isHomepage = pathname == '/'
-	const [treatments, setTreatments] = useState<Treatment[]>([])
-
-	useEffect(() => {
-		getTreatments().then(setTreatments)
-	}, [])
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen)
@@ -177,18 +176,14 @@ const Header: React.FC = () => {
 													<div className={styles.submenuTitle}>
 														<h3>{item.submenuTitle}</h3>
 														<div className={styles.dropdownContent}>
-															{treatments.map(item => (
+															{item.submenu.map((item, index) => (
 																<Link
-																	key={item.node.id}
-																	href={`/treatments/${item.node.title
-																		.toLowerCase()
-																		.replace(/[^a-z0-9 ]/g, '')
-																		.replace(/ /g, '-')
-																		.replace(/-+/g, '-')}`}
+																	key={index}
+																	href={item.href}
 																	className={styles.dropdownLink}
 																	onClick={() => setActiveSubmenu(false)}
 																>
-																	{item.node.title}
+																	{item.title}
 																</Link>
 															))}
 														</div>
