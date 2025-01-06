@@ -1,5 +1,14 @@
 import type { Metadata } from 'next'
 import './globals.scss'
+import { Epilogue, Literata } from 'next/font/google'
+
+const epilogue = Epilogue({
+	subsets: ['latin']
+})
+
+const literata = Literata({
+	subsets: ['latin']
+})
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -25,7 +34,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang='en'>
-			<body>
+			<body className={`${epilogue} ${literata}`}>
 				<Header treatments={treatments} />
 				{children}
 				<Footer />
