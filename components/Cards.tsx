@@ -105,6 +105,7 @@ const Cards: React.FC<Props> = ({
 				<button
 					onClick={() => scroll(false)}
 					style={{ left: fullWidth ? 32 : 0 }}
+					name='scroll left'
 				>
 					<IoIosArrowBack size={20} fill='white' />
 				</button>
@@ -113,6 +114,7 @@ const Cards: React.FC<Props> = ({
 				<button
 					onClick={() => scroll(true)}
 					style={{ right: fullWidth ? 32 : 0 }}
+					name='scroll right'
 				>
 					<IoIosArrowForward size={20} fill='white' />
 				</button>

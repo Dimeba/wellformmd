@@ -119,15 +119,16 @@ const Header: React.FC<Props> = ({ treatments }) => {
 					(515) 446-8304
 				</p>
 				<div className={`container ${styles.headerContainer}`}>
-					<a href='/' className={styles.logoWrapper}>
+					<Link href='/' className={styles.logoWrapper} aria-label='Homepage'>
 						<Image
 							src='/logo.svg'
 							width={280}
 							height={70}
 							alt='Weight loss and wellness'
 							className={styles.logo}
+							priority
 						/>
-					</a>
+					</Link>
 					<nav className={`${styles.navigation} ${isOpen ? styles.open : ''}`}>
 						<ul className={styles.menuList}>
 							{menuItems.map((item, index) => (
