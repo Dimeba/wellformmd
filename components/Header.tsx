@@ -139,7 +139,7 @@ const Header: React.FC = () => {
 					(515) 446-8304
 				</p>
 				<div className={`container ${styles.headerContainer}`}>
-					{/* <Link href='/' className={styles.logoWrapper} aria-label='Homepage'>
+					<Link href='/' className={styles.logoWrapper} aria-label='Homepage'>
 						<Image
 							src='/logo.png'
 							width={280}
@@ -148,7 +148,7 @@ const Header: React.FC = () => {
 							className={styles.logo}
 							priority
 						/>
-					</Link> */}
+					</Link>
 					<nav className={`${styles.navigation} ${isOpen ? styles.open : ''}`}>
 						<ul className={styles.menuList}>
 							{menuItems.map((item, index) => (
