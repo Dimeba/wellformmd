@@ -22,6 +22,18 @@ import HamburgerMenu from './Hamburger'
 //types
 import { Treatment } from '@/types/contentTypes'
 
+//slug
+const createSlug = (title: string): string => {
+	return title
+		.toLowerCase()
+		.replace(/[^a-z0-9 ]/g, '')
+		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-')
+}
+
+// queries
+import { getTreatments } from '@/graphql/queries'
+
 interface MenuItem {
 	title: string
 	href: string
@@ -81,6 +93,11 @@ const Header: React.FC = () => {
 	const [activeSubmenu, setActiveSubmenu] = useState<number | false>(false) //state for submenu
 	const pathname = usePathname()
 	const isHomepage = pathname == '/'
+	const [treatments, setTreatments] = useState<Treatment[]>([])
+
+	useEffect(() => {
+		getTreatments().then(setTreatments)
+	}, [])
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen)
@@ -122,7 +139,7 @@ const Header: React.FC = () => {
 					(515) 446-8304
 				</p>
 				<div className={`container ${styles.headerContainer}`}>
-					<Link href='/' className={styles.logoWrapper} aria-label='Homepage'>
+					{/* <Link href='/' className={styles.logoWrapper} aria-label='Homepage'>
 						<Image
 							src='/logo.png'
 							width={280}
@@ -131,7 +148,7 @@ const Header: React.FC = () => {
 							className={styles.logo}
 							priority
 						/>
-					</Link>
+					</Link> */}
 					<nav className={`${styles.navigation} ${isOpen ? styles.open : ''}`}>
 						<ul className={styles.menuList}>
 							{menuItems.map((item, index) => (
@@ -176,14 +193,18 @@ const Header: React.FC = () => {
 													<div className={styles.submenuTitle}>
 														<h3>{item.submenuTitle}</h3>
 														<div className={styles.dropdownContent}>
-															{item.submenu.map((item, index) => (
+															{treatments.map(item => (
 																<Link
-																	key={index}
-																	href={item.href}
+																	key={item.node.id}
+																	href={`/treatments/${item.node.title
+																		.toLowerCase()
+																		.replace(/[^a-z0-9 ]/g, '')
+																		.replace(/ /g, '-')
+																		.replace(/-+/g, '-')}`}
 																	className={styles.dropdownLink}
 																	onClick={() => setActiveSubmenu(false)}
 																>
-																	{item.title}
+																	{item.node.title}
 																</Link>
 															))}
 														</div>
