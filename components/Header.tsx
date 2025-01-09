@@ -20,7 +20,7 @@ import Button from './Button'
 import HamburgerMenu from './Hamburger'
 
 //types
-import { Treatment } from '@/types/contentTypes'
+import { Treatment, Menu } from '@/types/contentTypes'
 
 //slug
 const createSlug = (title: string): string => {
@@ -32,7 +32,7 @@ const createSlug = (title: string): string => {
 }
 
 // queries
-import { getTreatments } from '@/graphql/queries'
+import { getTreatments, getMenuById } from '@/graphql/queries'
 
 interface MenuItem {
 	title: string
@@ -81,10 +81,10 @@ const menuItems: MenuItem[] = [
 			}
 		]
 	},
-	{ title: 'Specials', href: '/specials' },
-	{ title: 'Gallery', href: '/gallery' },
-	{ title: 'About Us', href: '/about' },
-	{ title: 'Blog', href: '/blog' }
+	// { title: 'Specials', href: '/specials' },
+	// { title: 'Gallery', href: '/gallery' },
+	{ title: 'About Us', href: '/about' }
+	// { title: 'Blog', href: '/blog' }
 ]
 
 const Header: React.FC = () => {
@@ -94,9 +94,13 @@ const Header: React.FC = () => {
 	const pathname = usePathname()
 	const isHomepage = pathname == '/'
 	const [treatments, setTreatments] = useState<Treatment[]>([])
+	const [menu, setMenu] = useState<any>()
 
 	useEffect(() => {
 		getTreatments().then(setTreatments)
+		getMenuById('dGVybToz').then(setMenu)
+
+		console.log(menu)
 	}, [])
 
 	const toggleMenu = () => {

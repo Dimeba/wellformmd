@@ -296,3 +296,17 @@ export type Image = {
 		}
 	}
 }
+
+// Menu
+export type Menu = {
+	menu: {
+		id: string
+		menuItems: {
+			edges: {
+				node: {
+					label: string
+				}
+			}
+		}
+	}
+}

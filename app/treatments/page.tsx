@@ -28,8 +28,6 @@ export default async function Treatments() {
 
 	const sections = props.sections
 
-	console.log(sections)
-
 	// Sections
 	const heroSection = sections[0]?.node.sectionFields
 	const testimonialsSection = sections[2]?.node.sectionFields
@@ -92,7 +90,7 @@ export default async function Treatments() {
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{
 					text: 'Get Directions',
-					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
+					link: 'https://maps.app.goo.gl/znSkAUfL7sD66SKp9'
 				}}
 			/>
 		</main>

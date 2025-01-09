@@ -15,7 +15,8 @@ import {
 	Article,
 	Specials,
 	TeamMembers,
-	Images
+	Images,
+	Menu
 } from '@/types/contentTypes'
 
 const client = getGraphQLClient()
@@ -373,4 +374,26 @@ export async function getImages() {
 	const data = await client.request<Images>(query)
 
 	return data.mediaItems.edges
+}
+
+// menu
+export async function getMenuById(id: string) {
+	const query = gql`
+		query GetMenu($id: ID!) {
+			menu(id: $id) {
+				id
+				menuItems {
+					edges {
+						node {
+							label
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const data = await client.request<Menu>(query, { id })
+
+	return data.menu
 }

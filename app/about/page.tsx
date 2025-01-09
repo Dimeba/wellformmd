@@ -81,7 +81,7 @@ export default async function About() {
 				button1={{ text: 'Book Consultation', link: '/' }}
 				button2={{
 					text: 'Get Directions',
-					link: 'https://maps.app.goo.gl/Qjy9GdbbLW6b3qVq9'
+					link: 'https://maps.app.goo.gl/znSkAUfL7sD66SKp9'
 				}}
 			/>
 		</main>
